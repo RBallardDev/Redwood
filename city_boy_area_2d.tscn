@@ -175,6 +175,7 @@ size = Vector2(42.5, 93)
 
 [node name="CityBoyArea2D" type="CharacterBody2D"]
 position = Vector2(147, 220)
+collision_mask = 3
 script = ExtResource("1_e5oia")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 
 	# Horizontal movement
 	var horizontal_input = Input.get_axis("ui_left", "ui_right")
-	
+
 	# Cancel throw animation if moving while throwing
 	if is_throwing and horizontal_input != 0:
 		is_throwing = false
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# Pick up the rock when E is pressed if near a rock
-	if rock_instance.player_in_range and Input.is_action_just_pressed("pickup"):
+	if rock_instance and rock_instance.player_in_range and Input.is_action_just_pressed("pickup"):
 		pick_up_rock()
 
 	# Keep the rock positioned next to the player if holding it

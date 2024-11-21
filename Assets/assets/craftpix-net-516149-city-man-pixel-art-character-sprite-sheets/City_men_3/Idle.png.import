@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bll0vlkoj5lro"
-path="res://.godot/imported/Idle.png-892b8319229c2dd5cfeecd0ff6f5366b.ctex"
+path="res://.godot/imported/Idle.png-993a1c04e65cb85372619d707495277b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_3/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-892b8319229c2dd5cfeecd0ff6f5366b.ctex"]
+source_file="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_3/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-993a1c04e65cb85372619d707495277b.ctex"]
 
 [params]
 

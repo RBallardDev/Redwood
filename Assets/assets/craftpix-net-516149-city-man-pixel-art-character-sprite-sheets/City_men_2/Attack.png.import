@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3845pv6ppajw"
-path="res://.godot/imported/Attack.png-94383aad38f6cdb7e9c5e8d80cbc0007.ctex"
+path="res://.godot/imported/Attack.png-f78b1a62a6f02ed2676eccad0e24b198.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_2/Attack.png"
-dest_files=["res://.godot/imported/Attack.png-94383aad38f6cdb7e9c5e8d80cbc0007.ctex"]
+source_file="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_2/Attack.png"
+dest_files=["res://.godot/imported/Attack.png-f78b1a62a6f02ed2676eccad0e24b198.ctex"]
 
 [params]
 

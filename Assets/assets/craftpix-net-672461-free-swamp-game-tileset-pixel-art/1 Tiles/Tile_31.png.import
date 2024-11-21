@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brfwujlj6th1s"
-path="res://.godot/imported/Tile_31.png-b102266c1be335b863dabd79a4963acf.ctex"
+path="res://.godot/imported/Tile_31.png-7c8de6db97ab4adf26cb37d07fc6f093.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/1 Tiles/Tile_31.png"
-dest_files=["res://.godot/imported/Tile_31.png-b102266c1be335b863dabd79a4963acf.ctex"]
+source_file="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/1 Tiles/Tile_31.png"
+dest_files=["res://.godot/imported/Tile_31.png-7c8de6db97ab4adf26cb37d07fc6f093.ctex"]
 
 [params]
 

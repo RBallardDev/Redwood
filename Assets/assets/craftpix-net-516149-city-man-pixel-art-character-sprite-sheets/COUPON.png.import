@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b86aw20fqh5q6"
-path="res://.godot/imported/COUPON.png-d49179f442ce30261a3546f6c13d4999.ctex"
+path="res://.godot/imported/COUPON.png-022c1fdf012da14aa0a043d787ef5227.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/COUPON.png"
-dest_files=["res://.godot/imported/COUPON.png-d49179f442ce30261a3546f6c13d4999.ctex"]
+source_file="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/COUPON.png"
+dest_files=["res://.godot/imported/COUPON.png-022c1fdf012da14aa0a043d787ef5227.ctex"]
 
 [params]
 

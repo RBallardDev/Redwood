@@ -1,12 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://xllgmivpit45"]
+[gd_scene load_steps=5 format=3 uid="uid://xllgmivpit45"]
 
 [ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://city_boy_area_2d.tscn" id="1_4hpag"]
+[ext_resource type="PackedScene" uid="uid://cbybevu6undd7" path="res://Background.tscn" id="1_r1bi8"]
 [ext_resource type="PackedScene" uid="uid://bt1ce81wa58jr" path="res://ground_static_body_2d.tscn" id="2_g4mv4"]
 [ext_resource type="PackedScene" uid="uid://hilsr40tavac" path="res://rock.tscn" id="3_bw1tw"]
 
 [node name="Main" type="Node2D"]
 
-[node name="CityBoyArea2D" parent="." instance=ExtResource("1_4hpag")]
+[node name="Background" parent="." instance=ExtResource("1_r1bi8")]
+position = Vector2(575.75, 272)
+scale = Vector2(1.99566, 1.67593)
+
+[node name="Background2" parent="." instance=ExtResource("1_r1bi8")]
+position = Vector2(1720, 272)
+scale = Vector2(1.99566, 1.67593)
+
+[node name="CityBoyCharacterBody2D" parent="." instance=ExtResource("1_4hpag")]
+position = Vector2(711, 400)
+
+[node name="Camera2D" type="Camera2D" parent="CityBoyCharacterBody2D"]
+position = Vector2(19, 43)
+zoom = Vector2(2, 2)
+limit_left = 50
+limit_right = 2293
 
 [node name="GroundStaticBody2D" parent="." instance=ExtResource("2_g4mv4")]
 position = Vector2(1, 6)

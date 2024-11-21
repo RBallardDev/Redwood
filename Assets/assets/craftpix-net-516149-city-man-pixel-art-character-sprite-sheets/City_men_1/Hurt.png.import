@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://unrqmyfyd22x"
-path="res://.godot/imported/Hurt.png-9630eecd74920188ed1e1aeb4f20a58d.ctex"
+path="res://.godot/imported/Hurt.png-a30e73f65a36f5747d8b3934d5a05341.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Hurt.png"
-dest_files=["res://.godot/imported/Hurt.png-9630eecd74920188ed1e1aeb4f20a58d.ctex"]
+source_file="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Hurt.png"
+dest_files=["res://.godot/imported/Hurt.png-a30e73f65a36f5747d8b3934d5a05341.ctex"]
 
 [params]
 

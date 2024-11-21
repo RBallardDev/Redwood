@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyptu202y0a2q"
-path="res://.godot/imported/Walk.png-5d8b126303b5d5d7384464961d4c33a5.ctex"
+path="res://.godot/imported/Walk.png-0b9fd43fc0818e6d65b1eeedd3633461.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_3/Walk.png"
-dest_files=["res://.godot/imported/Walk.png-5d8b126303b5d5d7384464961d4c33a5.ctex"]
+source_file="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_3/Walk.png"
+dest_files=["res://.godot/imported/Walk.png-0b9fd43fc0818e6d65b1eeedd3633461.ctex"]
 
 [params]
 
