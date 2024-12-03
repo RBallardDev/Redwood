@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://d308p5bxm61in"]
+
+[ext_resource type="Texture2D" uid="uid://d4fp5l0r5ttm" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Willows/1.png" id="1_kw3qt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y6mgq"]
+radius = 16.0
+height = 50.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mc3lb"]
+radius = 31.0
+height = 90.0
+
+[node name="TreeStaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -48)
+scale = Vector2(2.02885, 2.02885)
+texture = ExtResource("1_kw3qt")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-31, -35)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_y6mgq")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(63, -94)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mc3lb")
+metadata/_edit_group_ = true

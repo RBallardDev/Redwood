@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1xjnmt8e6gro"]
+
+[ext_resource type="Texture2D" uid="uid://laddsnrsg6yg" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/1 Tiles/Tile_08.png" id="1_41sih"]
+
+[node name="Tile" type="Node2D"]
+
+[node name="Tile08" type="Sprite2D" parent="."]
+scale = Vector2(0.71875, 0.71875)
+texture = ExtResource("1_41sih")

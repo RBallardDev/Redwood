@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://coq6fwoxu06go" path="res://Assets/Screenshot 2024-11-04 at 11.51.28 PM.png" id="1_hexfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1usv2"]
-size = Vector2(2393.82, 146)
+size = Vector2(2393.82, 144)
 
 [node name="GroundStaticBody2D" type="StaticBody2D"]
 
@@ -14,6 +14,6 @@ texture = ExtResource("1_hexfe")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1113.09, 569)
+position = Vector2(1113.09, 570)
 shape = SubResource("RectangleShape2D_1usv2")
 metadata/_edit_group_ = true
