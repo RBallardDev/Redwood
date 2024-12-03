@@ -16,9 +16,7 @@ func _ready():
 # Detect when the player enters the pickup area
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		player_in_range = true
-		print("Player entered pickup area")  # Debugging line
-
+		player_in_range = true  # Set flag to true when player is near
 
 func _on_body_exited(body):
 	if body.is_in_group("Player"):
@@ -31,7 +29,3 @@ func start_reset_timer():
 # Stop the rock's movement when the timer ends
 func _on_reset_timer_timeout():
 	velocity = Vector2.ZERO
-
-
-func _on_pickup_area_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.

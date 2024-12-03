@@ -4,10 +4,16 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 980.0
 const THROW_FORCE = 600.0
+const WALL_JUMP_VELOCITY = Vector2(250, -400) 
 
 var holding_rock = false
 var rock_instance = null  # Reference to the rock the player is close to
 var is_throwing = false
+var is_crouching = false
+var player_height = 20.5
+var is_grabbing_wall = false
+
+
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var throw_timer = $ThrowTimer
@@ -23,28 +29,55 @@ func _physics_process(delta: float) -> void:
 		velocity.y += GRAVITY * delta
 	else:
 		velocity.y = 0
+		
+	if is_on_wall():
+		velocity.y = 0
+		velocity.x = 0
+		animated_sprite.play("climb")
+		if Input.is_action_pressed("ui_up") and is_on_floor() and not is_throwing:
+			animated_sprite.play("jump")
+			velocity.y = JUMP_VELOCITY
+		
+		
+		
 
 	# Handle jumping
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_throwing:
+	if Input.is_action_pressed("ui_up") and is_on_floor() and not is_throwing:
+		animated_sprite.play("jump")
 		velocity.y = JUMP_VELOCITY
+		
 
 	# Horizontal movement
 	var horizontal_input = Input.get_axis("ui_left", "ui_right")
-
+	
 	# Cancel throw animation if moving while throwing
 	if is_throwing and horizontal_input != 0:
 		is_throwing = false
 		throw_timer.stop()
-		animated_sprite.play("walk")
+		animated_sprite.play("run")
 
-	if not is_throwing:
-		velocity.x = horizontal_input * SPEED
+	velocity.x = horizontal_input * SPEED  # This should be inside _physics_process()
 
-		if horizontal_input != 0:
-			animated_sprite.play("walk")
-			animated_sprite.flip_h = horizontal_input < 0
-		else:
-			animated_sprite.play("idle")
+  # Determine animation priority
+	if Input.is_action_just_pressed("throw") and holding_rock:
+		play_throw_animation()  # Highest priority
+	elif Input.is_action_just_pressed("attack"):
+		print("attack input recieved")
+		animated_sprite.play("attack_dash")  # High priority
+	elif Input.is_action_pressed("crouch"):
+		print("crouch input recieved")
+		animated_sprite.play("crouch")
+		$CollisionShape2D.shape.extents.y = player_height / 1.5
+	elif not is_on_floor():
+		animated_sprite.play("jump")  # Movement priority (airborne)
+	elif horizontal_input != 0:
+		animated_sprite.play("run")  # Movement priority (on ground)
+		animated_sprite.flip_h = horizontal_input < 0
+	else:
+		is_crouching = false
+		$CollisionShape2D.shape.extents.y = player_height
+		animated_sprite.play("idle")  # Fallback priority
+
 
 	# Trigger throw animation or throw the rock
 	if Input.is_action_just_pressed("throw"):
@@ -56,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# Pick up the rock when E is pressed if near a rock
-	if rock_instance and rock_instance.player_in_range and Input.is_action_just_pressed("pickup"):
+	if rock_instance.player_in_range and Input.is_action_just_pressed("pickup"):
 		pick_up_rock()
 
 	# Keep the rock positioned next to the player if holding it
@@ -64,6 +97,9 @@ func _physics_process(delta: float) -> void:
 		var rock_offset = Vector2(30, -10)
 		rock_instance.global_position = global_position + rock_offset * (-1 if animated_sprite.flip_h else 1)
 
+
+func attack_dash() -> void:
+	animated_sprite.play("attack")
 func play_throw_animation() -> void:
 	animated_sprite.play("throw")
 	is_throwing = true

@@ -1,11 +1,11 @@
 [gd_scene load_steps=43 format=3 uid="uid://c1g0jgml7hlq6"]
 
 [ext_resource type="Script" path="res://player_character.gd" id="1_6vbhx"]
-[ext_resource type="Texture2D" uid="uid://c3drcyogc8yqj" path="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Attack.png" id="1_xbjog"]
-[ext_resource type="Texture2D" uid="uid://unrqmyfyd22x" path="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Hurt.png" id="3_ko710"]
-[ext_resource type="Texture2D" uid="uid://dhxux756it3ml" path="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Idle.png" id="4_ulq0j"]
-[ext_resource type="Texture2D" uid="uid://cpvp1wlodpsdj" path="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Run.png" id="5_6t4o4"]
-[ext_resource type="Texture2D" uid="uid://cw11fpaq1m83m" path="res://Assets/assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Walk.png" id="6_mdj1g"]
+[ext_resource type="Texture2D" uid="uid://c3drcyogc8yqj" path="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Attack.png" id="1_xbjog"]
+[ext_resource type="Texture2D" uid="uid://unrqmyfyd22x" path="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Hurt.png" id="3_ko710"]
+[ext_resource type="Texture2D" uid="uid://dhxux756it3ml" path="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Idle.png" id="4_ulq0j"]
+[ext_resource type="Texture2D" uid="uid://cpvp1wlodpsdj" path="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Run.png" id="5_6t4o4"]
+[ext_resource type="Texture2D" uid="uid://cw11fpaq1m83m" path="res://assets/craftpix-net-516149-city-man-pixel-art-character-sprite-sheets/City_men_1/Walk.png" id="6_mdj1g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2hru1"]
 
