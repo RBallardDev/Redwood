@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://xllgmivpit45"]
+
+[ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://city_boy_area_2d.tscn" id="1_4hpag"]
+[ext_resource type="PackedScene" uid="uid://bt1ce81wa58jr" path="res://ground_static_body_2d.tscn" id="2_g4mv4"]
+[ext_resource type="PackedScene" uid="uid://hilsr40tavac" path="res://rock.tscn" id="3_bw1tw"]
+[ext_resource type="PackedScene" uid="uid://c3dyiw8mng4p1" path="res://enemy.tscn" id="3_kgtsm"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CityBoyArea2D" parent="." instance=ExtResource("1_4hpag")]
+position = Vector2(155, 338)
+
+[node name="GroundStaticBody2D5" parent="." instance=ExtResource("2_g4mv4")]
+position = Vector2(-454, -379)
+
+[node name="GroundStaticBody2D4" parent="." instance=ExtResource("2_g4mv4")]
+position = Vector2(1012, -154)
+
+[node name="GroundStaticBody2D3" parent="." instance=ExtResource("2_g4mv4")]
+position = Vector2(1116, -221)
+
+[node name="GroundStaticBody2D3" parent="GroundStaticBody2D3" instance=ExtResource("2_g4mv4")]
+position = Vector2(87, -100)
+
+[node name="GroundStaticBody2D2" parent="." instance=ExtResource("2_g4mv4")]
+position = Vector2(756, -76)
+
+[node name="GroundStaticBody2D" parent="." instance=ExtResource("2_g4mv4")]
+position = Vector2(1, 6)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_kgtsm")]
+position = Vector2(776, 94)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_kgtsm")]
+position = Vector2(696, 92)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_kgtsm")]
+position = Vector2(547, 96)
+
+[node name="Enemy" parent="." instance=ExtResource("3_kgtsm")]
+position = Vector2(362, 94)
+
+[node name="Rock4" parent="." instance=ExtResource("3_bw1tw")]
+position = Vector2(1025, 163)
+
+[node name="Rock" parent="." instance=ExtResource("3_bw1tw")]
+position = Vector2(589, 495)
+
+[node name="Rock3" parent="." instance=ExtResource("3_bw1tw")]
+position = Vector2(980, 284)
+
+[node name="Rock2" parent="." instance=ExtResource("3_bw1tw")]
+position = Vector2(863, 409)
