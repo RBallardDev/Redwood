@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbybevu6undd7"]
+
+[ext_resource type="Texture2D" uid="uid://tvoh73205v0" path="res://assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/2 Background/Background.png" id="1_3f2y1"]
+
+[node name="Background" type="Sprite2D"]
+texture = ExtResource("1_3f2y1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3f2y1")

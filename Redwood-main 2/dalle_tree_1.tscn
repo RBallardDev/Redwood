@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://yo73qoj0lvxa"]
+
+[ext_resource type="Texture2D" uid="uid://y3am74qt8pyy" path="res://dalle tree 1.png" id="1_r2tmo"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_avi36"]
+a = Vector2(-8, -17)
+b = Vector2(-2, 15)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_68raj"]
+a = Vector2(213, 59)
+b = Vector2(250, 59)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hwbrk"]
+a = Vector2(31, 72)
+b = Vector2(6, 73)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(412, 227)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(472, 513)
+scale = Vector2(0.865721, 0.865721)
+texture = ExtResource("1_r2tmo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(394, 519)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_avi36")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(416, 648, 416, 644, 433, 640, 433, 635, 447, 626, 450, 612, 451, 587, 456, 582, 456, 572, 451, 566, 450, 555, 452, 547, 457, 529, 453, 522, 454, 503, 454, 459, 466, 461, 467, 484, 467, 510, 466, 537, 466, 566, 467, 613, 473, 621, 478, 627, 484, 634, 503, 644, 503, 648)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(245, 376)
+shape = SubResource("SegmentShape2D_68raj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(267, 423)
+shape = SubResource("SegmentShape2D_68raj")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(389, 363)
+shape = SubResource("SegmentShape2D_hwbrk")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(443, 312)
+shape = SubResource("SegmentShape2D_hwbrk")
