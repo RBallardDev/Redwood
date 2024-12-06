@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var min_x = -1031
-var max_x = 1152
+var max_x = 1530
 
 # Constants for movement
 const SPEED = 200.0
