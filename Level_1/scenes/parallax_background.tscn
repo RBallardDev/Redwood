@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://duqsqtiaghic0"]
+
+[ext_resource type="Texture2D" uid="uid://dynlh6ehwjjgc" path="res://Forest/1.png" id="1_jun82"]
+[ext_resource type="Texture2D" uid="uid://c7x6yc2211jem" path="res://Forest/2.png" id="2_tqfkf"]
+[ext_resource type="Texture2D" uid="uid://cqa7u5820hdo0" path="res://Forest/3.png" id="3_txiwh"]
+[ext_resource type="Texture2D" uid="uid://du1ffsnn4je2m" path="res://Forest/4.png" id="4_k1o3d"]
+[ext_resource type="Texture2D" uid="uid://brsnrcjw2cjn3" path="res://Forest/5.png" id="5_yhpjb"]
+[ext_resource type="Texture2D" uid="uid://dvpiwf2lhqdkj" path="res://Forest/6.png" id="6_p153w"]
+[ext_resource type="Texture2D" uid="uid://ctkqs551qhcpt" path="res://Forest/7.1.png" id="7_40kra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yi4n"]
+size = Vector2(2561, 36)
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(250.5, 630)
+shape = SubResource("RectangleShape2D_2yi4n")
+
+[node name="Layer7" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer7"]
+position = Vector2(250, 318.5)
+scale = Vector2(2.223, 0.99537)
+texture = ExtResource("1_jun82")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Layer6" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer6"]
+texture_repeat = 2
+position = Vector2(250, 502)
+scale = Vector2(2.223, 2.223)
+texture = ExtResource("2_tqfkf")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 131)
+
+[node name="Layer5" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer5"]
+texture_repeat = 2
+position = Vector2(250, 502)
+scale = Vector2(2.223, 2.223)
+texture = ExtResource("3_txiwh")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 131)
+
+[node name="Layer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer4"]
+texture_repeat = 2
+position = Vector2(250, 502)
+scale = Vector2(2.223, 2.223)
+texture = ExtResource("4_k1o3d")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 131)
+
+[node name="Layer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer3"]
+texture_repeat = 2
+position = Vector2(250, 502)
+scale = Vector2(2.223, 2.215)
+texture = ExtResource("5_yhpjb")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 131)
+
+[node name="Layer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.9, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer2"]
+texture_repeat = 2
+position = Vector2(250, 546.875)
+scale = Vector2(2.223, 2.223)
+texture = ExtResource("6_p153w")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 180)
+
+[node name="Layer1" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer1"]
+texture_repeat = 2
+position = Vector2(250, 502)
+scale = Vector2(2.22328, 2.22328)
+texture = ExtResource("7_40kra")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 131)

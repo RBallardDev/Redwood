@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cdo7x7o3ydvbj"
+path="res://.godot/imported/trunk open.mp3-0f66d31e13437689174cb5b767b8347a.mp3str"
+
+[deps]
+
+source_file="res://Level_1/audio/trunk open.mp3"
+dest_files=["res://.godot/imported/trunk open.mp3-0f66d31e13437689174cb5b767b8347a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

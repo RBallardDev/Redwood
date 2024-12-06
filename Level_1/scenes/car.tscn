@@ -1,0 +1,170 @@
+[gd_scene load_steps=25 format=3 uid="uid://cal5wswokkfjr"]
+
+[ext_resource type="Script" path="res://Level_1/scripts/car.gd" id="1_747sy"]
+[ext_resource type="Texture2D" uid="uid://cx553q3dh8htm" path="res://Jeep_2/fixed idle.png" id="2_h1n3e"]
+[ext_resource type="Texture2D" uid="uid://cgn03arcri8tx" path="res://Jeep_2/Trunk fixed.png" id="3_sqs1n"]
+[ext_resource type="Texture2D" uid="uid://cns12n5nkw84b" path="res://Jeep_2/Trunk open idle fix.png" id="4_fsijm"]
+[ext_resource type="AudioStream" uid="uid://dg0lfkgyqw52d" path="res://Level_1/audio/443269__alec_havinmaa__car-idling-loop.wav" id="5_2r4jo"]
+[ext_resource type="AudioStream" uid="uid://cdo7x7o3ydvbj" path="res://Level_1/audio/trunk open.mp3" id="6_kqvqe"]
+[ext_resource type="AudioStream" uid="uid://bxy3ceajx74ca" path="res://Level_1/audio/trunk close.mp3" id="7_anm1g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6jaj"]
+atlas = ExtResource("2_h1n3e")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj7p7"]
+atlas = ExtResource("2_h1n3e")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qqgu"]
+atlas = ExtResource("2_h1n3e")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xokri"]
+atlas = ExtResource("3_sqs1n")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnepd"]
+atlas = ExtResource("3_sqs1n")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rb0a"]
+atlas = ExtResource("3_sqs1n")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60av6"]
+atlas = ExtResource("3_sqs1n")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0x87"]
+atlas = ExtResource("3_sqs1n")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woglh"]
+atlas = ExtResource("3_sqs1n")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18nt3"]
+atlas = ExtResource("3_sqs1n")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rdsc"]
+atlas = ExtResource("3_sqs1n")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuy2y"]
+atlas = ExtResource("4_fsijm")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6srrr"]
+atlas = ExtResource("4_fsijm")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f80be"]
+atlas = ExtResource("4_fsijm")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkiop"]
+atlas = ExtResource("4_fsijm")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cl0jx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6jaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj7p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qqgu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xokri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnepd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rb0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60av6")
+}],
+"loop": true,
+"name": &"trunk_close",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0x87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woglh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18nt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rdsc")
+}],
+"loop": true,
+"name": &"trunk_open",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuy2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6srrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f80be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkiop")
+}],
+"loop": true,
+"name": &"trunk_open_idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wry64"]
+size = Vector2(262, 140)
+
+[node name="Car" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_747sy")
+metadata/_edit_vertical_guides_ = [-186.0]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(25.5, 25.5)
+scale = Vector2(0.800781, 0.800781)
+sprite_frames = SubResource("SpriteFrames_cl0jx")
+animation = &"trunk_open_idle"
+autoplay = "idle"
+frame_progress = 0.277507
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(41, 60)
+shape = SubResource("RectangleShape2D_wry64")
+
+[node name="CarIdleSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2r4jo")
+autoplay = true
+
+[node name="TrunkOpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_kqvqe")
+
+[node name="TrunkCloseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_anm1g")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

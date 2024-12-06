@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b52cjry6lr21c"]
+
+[ext_resource type="PackedScene" uid="uid://duqsqtiaghic0" path="res://Level_1/scenes/parallax_background.tscn" id="1_6vd8j"]
+[ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://Level_1/scenes/Shilo.tscn" id="2_sejmj"]
+[ext_resource type="PackedScene" uid="uid://cal5wswokkfjr" path="res://Level_1/scenes/car.tscn" id="3_45780"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_6vd8j")]
+
+[node name="Shilo" parent="." instance=ExtResource("2_sejmj")]
+position = Vector2(-341, 558)
+
+[node name="Car" parent="." instance=ExtResource("3_45780")]
+position = Vector2(-987, 484)
