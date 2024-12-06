@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b52cjry6lr21c"]
+[gd_scene load_steps=11 format=3 uid="uid://b52cjry6lr21c"]
 
 [ext_resource type="PackedScene" uid="uid://duqsqtiaghic0" path="res://Level_1/scenes/parallax_background.tscn" id="1_6vd8j"]
 [ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://Level_1/scenes/Shilo.tscn" id="2_sejmj"]
 [ext_resource type="PackedScene" uid="uid://cal5wswokkfjr" path="res://Level_1/scenes/car.tscn" id="3_45780"]
 [ext_resource type="Texture2D" uid="uid://dxj34wv64732o" path="res://Level_1/assets/flipped big tent.png" id="3_u66t3"]
+[ext_resource type="Texture2D" uid="uid://bg8oglgiaqb07" path="res://Level_1/assets/trees/tunnel tree back.png" id="4_e6o7m"]
 [ext_resource type="Texture2D" uid="uid://4aaaiqjl1bbq" path="res://Level_1/assets/tent.png" id="4_v88gy"]
-[ext_resource type="Texture2D" uid="uid://i7a4u015xtle" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Ridges/3.png" id="5_iipek"]
+[ext_resource type="Texture2D" uid="uid://bflyskpptff8e" path="res://Level_1/assets/trees/tunnel tree front.png" id="7_6llyj"]
+[ext_resource type="AudioStream" uid="uid://bxmebio3tyrth" path="res://Level_1/audio/427400__imjeax__forest-ambient-loop.wav" id="8_hhmlp"]
+[ext_resource type="PackedScene" uid="uid://dbqyfj6qx0k50" path="res://Level_1/scenes/npc_1.tscn" id="9_8arwx"]
+[ext_resource type="PackedScene" uid="uid://cxitu75yg1lgs" path="res://Level_1/scenes/small_stump.tscn" id="10_3wsq5"]
 
 [node name="Level1" type="Node2D"]
 
@@ -15,19 +19,35 @@
 position = Vector2(-987, 484)
 
 [node name="FlippedBigTent" type="Sprite2D" parent="."]
-position = Vector2(863, 582)
+position = Vector2(1274.47, 582)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_u66t3")
 
+[node name="TunnelTreeBack" type="Sprite2D" parent="."]
+position = Vector2(-61.2432, 579.75)
+scale = Vector2(1.71622, 1.71622)
+texture = ExtResource("4_e6o7m")
+
 [node name="Shilo" parent="." instance=ExtResource("2_sejmj")]
-position = Vector2(-341, 558)
+position = Vector2(760, 562)
 
 [node name="Tent" type="Sprite2D" parent="."]
-position = Vector2(1100, 590)
+position = Vector2(1481, 590)
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("4_v88gy")
 
-[node name="3" type="Sprite2D" parent="."]
-position = Vector2(-161, 579)
-scale = Vector2(1.62195, 1.62195)
-texture = ExtResource("5_iipek")
+[node name="TunnelTreeFront" type="Sprite2D" parent="."]
+position = Vector2(-134, 581)
+scale = Vector2(1.71951, 1.71951)
+texture = ExtResource("7_6llyj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hhmlp")
+volume_db = 2.0
+autoplay = true
+
+[node name="Npc1" parent="." instance=ExtResource("9_8arwx")]
+position = Vector2(800.27, 548)
+
+[node name="Small_stump" parent="." instance=ExtResource("10_3wsq5")]
+position = Vector2(423, 598)
