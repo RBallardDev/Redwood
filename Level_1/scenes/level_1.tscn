@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b52cjry6lr21c"]
+[gd_scene load_steps=12 format=3 uid="uid://b52cjry6lr21c"]
 
 [ext_resource type="PackedScene" uid="uid://duqsqtiaghic0" path="res://Level_1/scenes/parallax_background.tscn" id="1_6vd8j"]
 [ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://Level_1/scenes/Shilo.tscn" id="2_sejmj"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bxmebio3tyrth" path="res://Level_1/audio/427400__imjeax__forest-ambient-loop.wav" id="8_hhmlp"]
 [ext_resource type="PackedScene" uid="uid://dbqyfj6qx0k50" path="res://Level_1/scenes/npc_1.tscn" id="9_8arwx"]
 [ext_resource type="PackedScene" uid="uid://cxitu75yg1lgs" path="res://Level_1/scenes/small_stump.tscn" id="10_3wsq5"]
+[ext_resource type="PackedScene" uid="uid://gecj2nycn1kt" path="res://Level_1/scenes/npc_2.tscn" id="11_f3ajx"]
 
 [node name="Level1" type="Node2D"]
 
@@ -51,3 +52,6 @@ position = Vector2(800.27, 548)
 
 [node name="Small_stump" parent="." instance=ExtResource("10_3wsq5")]
 position = Vector2(423, 598)
+
+[node name="npc2" parent="." instance=ExtResource("11_f3ajx")]
+position = Vector2(1339, 548)

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dof0x0cqf0102" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Ridges/2.png" id="1_5xgky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e8js"]
-size = Vector2(26, 14)
+size = Vector2(35, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ms548"]
 size = Vector2(6, 9)
@@ -18,7 +18,7 @@ collision_mask = 2
 texture = ExtResource("1_5xgky")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0.5, 7)
 shape = SubResource("RectangleShape2D_0e8js")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

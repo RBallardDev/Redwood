@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://gecj2nycn1kt"]
+[gd_scene load_steps=11 format=3 uid="uid://gecj2nycn1kt"]
 
+[ext_resource type="Script" path="res://Level_1/scripts/npc_2.gd" id="1_lyksl"]
 [ext_resource type="Texture2D" uid="uid://qc7e3q80g3gg" path="res://Possible_NPCs/City_men_1/Idle.png" id="1_syodw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb3mi"]
@@ -53,17 +54,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvkg5"]
-size = Vector2(21, 42.5)
+size = Vector2(26, 46.5)
 
 [node name="npc2" type="Area2D"]
+script = ExtResource("1_lyksl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(24.5, 24.5)
-scale = Vector2(0.617188, 0.617188)
+position = Vector2(22, 22)
+scale = Vector2(0.65625, 0.65625)
 sprite_frames = SubResource("SpriteFrames_2212m")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21.5, 43.25)
+position = Vector2(19, 41.25)
 shape = SubResource("RectangleShape2D_cvkg5")

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var target_x: float = 1300.0  # Target x-coordinate for NPC1
+@export var target_x: float = 1200.0  # Target x-coordinate for NPC1
 @export var walk_speed: float = 60.0  # Walking speed
 
 var is_walking = true  # Whether NPC1 is currently walking
