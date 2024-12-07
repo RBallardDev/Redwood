@@ -1,15 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxitu75yg1lgs"]
+[gd_scene load_steps=2 format=3 uid="uid://cxitu75yg1lgs"]
 
 [ext_resource type="Texture2D" uid="uid://dof0x0cqf0102" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Ridges/2.png" id="1_5xgky"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e8js"]
-size = Vector2(35, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms548"]
-size = Vector2(6, 9)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4l087"]
-radius = 5.0
 
 [node name="Small_stump" type="StaticBody2D"]
 collision_mask = 2
@@ -17,14 +8,5 @@ collision_mask = 2
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5xgky")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 7)
-shape = SubResource("RectangleShape2D_0e8js")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(16, 9.5)
-shape = SubResource("RectangleShape2D_ms548")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-15, 12)
-shape = SubResource("CircleShape2D_4l087")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, 1, 12, 1, 14, 4, 15, 5, 19, 11, 20, 14, -20, 14, -18, 10, -13, 8, -12, 6)

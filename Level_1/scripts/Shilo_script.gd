@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 var min_x = -1031
-var max_x = 1530
+var max_x = 1520
 
 # Constants for movement
 const SPEED = 200.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -400.0
 const GRAVITY = 980.0
 const DASH_SPEED = 750.0
 const BUNNYHOP_SPEED = SPEED * 1.8
@@ -46,7 +46,7 @@ func _physics_process(delta):
 	# Apply gravity by default
 	if not is_on_floor() and current_state != State.WALL_GRAB:
 		velocity.y += GRAVITY * delta
-	if crouch_state: 
+	if crouch_state:
 		velocity.y += (GRAVITY * 1.15) * delta
 
 	# Handle player state
@@ -63,7 +63,7 @@ func _physics_process(delta):
 			handle_crouch_slide_state()
 		State.WALL_GRAB:
 			handle_wall_grab_state(delta)
-	
+
 	move_and_slide()  # Move player based on the final velocity
 	position.x = clamp(position.x, min_x, max_x)  # Prevent moving off the map
 
@@ -87,10 +87,10 @@ func handle_run_state():
 	# Determine direction and flip sprite
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
 		direction = -1
-		animated_sprite.flip_h = true  # Face left
+		update_sprite_flip(direction)
 	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("run_right"):
 		direction = 1
-		animated_sprite.flip_h = false  # Face right
+		update_sprite_flip(direction)
 	else:
 		change_state(State.IDLE)
 		return
@@ -101,6 +101,9 @@ func handle_run_state():
 	if Input.is_action_just_pressed("attack"):
 		change_state(State.ATTACK_DASH)
 
+	if Input.is_action_just_pressed("crouch"):
+		change_state(State.CROUCH_SLIDE)
+
 	if Input.is_action_pressed("ui_up") or Input.is_action_pressed("jump"):
 		change_state(State.JUMP)
 
@@ -110,24 +113,18 @@ func handle_jump_state():
 		change_state(State.ATTACK_DASH)
 	elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
 		direction = -1
-		animated_sprite.flip_h = true  # Face left
+		update_sprite_flip(direction)
 	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("run_right"):
 		direction = 1
-		animated_sprite.flip_h = false  # Face right
+		update_sprite_flip(direction)
 
-	if direction == 0:
-		animated_sprite.play("jump")
-		velocity.x = 0
-	else:
-		velocity.x = direction * SPEED
-		animated_sprite.play("jump")
+	velocity.x = direction * SPEED
+	animated_sprite.play("jump")
 
 	if is_on_wall():
 		change_state(State.WALL_GRAB)
 	elif is_on_floor():
 		change_state(State.IDLE)
-	elif Input.is_action_just_pressed("crouch"):
-		change_state(State.CROUCH_SLIDE)
 
 func handle_attack_dash_state():
 	attack_timer -= get_physics_process_delta_time()
@@ -143,16 +140,17 @@ func handle_crouch_slide_state():
 	var direction = 0
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
 		direction = -1
-		animated_sprite.flip_h = true  # Face left
+		update_sprite_flip(direction)
 	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("run_right"):
 		direction = 1
-		animated_sprite.flip_h = false  # Face right
+		update_sprite_flip(direction)
 
 	if Input.is_action_pressed("crouch"):
 		animated_sprite.play("crouch")
 		crouch_state = true
-		velocity.x = SPEED * direction
+		velocity.x = SPEED * direction  # Maintain horizontal movement
 	else:
+		crouch_state = false
 		change_state(State.IDLE)
 
 func handle_wall_grab_state(delta):
@@ -177,7 +175,6 @@ func change_state(new_state, direction = 0):
 		State.RUN:
 			animated_sprite.play("run")
 			velocity.x = direction * SPEED
-			animated_sprite.flip_h = direction < 0
 		State.JUMP:
 			velocity.y = JUMP_VELOCITY
 			animated_sprite.play("jump")

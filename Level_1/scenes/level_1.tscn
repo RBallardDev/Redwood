@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b52cjry6lr21c"]
+[gd_scene load_steps=13 format=3 uid="uid://b52cjry6lr21c"]
 
 [ext_resource type="PackedScene" uid="uid://duqsqtiaghic0" path="res://Level_1/scenes/parallax_background.tscn" id="1_6vd8j"]
 [ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://Level_1/scenes/Shilo.tscn" id="2_sejmj"]
@@ -12,7 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://cxitu75yg1lgs" path="res://Level_1/scenes/small_stump.tscn" id="10_3wsq5"]
 [ext_resource type="PackedScene" uid="uid://gecj2nycn1kt" path="res://Level_1/scenes/npc_2.tscn" id="11_f3ajx"]
 
+[sub_resource type="GDScript" id="GDScript_eu0i3"]
+
 [node name="Level1" type="Node2D"]
+script = SubResource("GDScript_eu0i3")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_6vd8j")]
 
@@ -54,4 +57,4 @@ position = Vector2(800.27, 548)
 position = Vector2(423, 598)
 
 [node name="npc2" parent="." instance=ExtResource("11_f3ajx")]
-position = Vector2(1339, 548)
+position = Vector2(1340, 548)
