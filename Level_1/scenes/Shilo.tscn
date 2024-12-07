@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://duxgxp7rw77cv"]
+[gd_scene load_steps=61 format=3 uid="uid://duxgxp7rw77cv"]
 
 [ext_resource type="Script" path="res://Level_1/scripts/Shilo_script.gd" id="1_fhigf"]
 [ext_resource type="Texture2D" uid="uid://bpa4r86ifkghh" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_attack2.png" id="2_4q2xd"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://dhto6clq6fknn" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_jump.png" id="6_dxmp4"]
 [ext_resource type="Texture2D" uid="uid://mu1rbqlgc07a" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_run.png" id="7_m6ljx"]
 [ext_resource type="Texture2D" uid="uid://cxcw5m8d8xgyu" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_walk.png" id="8_xqjt8"]
+[ext_resource type="AudioStream" uid="uid://dncfjcxp55cbt" path="res://Assets/SoundFX/running.mp3" id="9_d6dq3"]
+[ext_resource type="AudioStream" uid="uid://v16fr8e1fhbp" path="res://Assets/SoundFX/low_stamina.mp3" id="10_2txxu"]
+[ext_resource type="AudioStream" uid="uid://cbgw0mwwdvb53" path="res://Assets/SoundFX/pickup.mp3" id="10_aca2s"]
+[ext_resource type="AudioStream" uid="uid://f1dylj1b5gdb" path="res://Assets/SoundFX/Attack_Dashes/swish-9.mp3" id="10_uc4qf"]
+[ext_resource type="AudioStream" uid="uid://dd4r0ucldj8c1" path="res://Assets/SoundFX/Attack_Dashes/swish-10.mp3" id="11_5xf8a"]
+[ext_resource type="AudioStream" uid="uid://dmyl8kqlckrc0" path="res://Assets/SoundFX/Attack_Dashes/swish-12.mp3" id="12_lcovb"]
+[ext_resource type="AudioStream" uid="uid://cf175blihp4r" path="res://Assets/SoundFX/sfx_jump_07-80241.mp3" id="13_2hw35"]
+[ext_resource type="AudioStream" uid="uid://cww1fl525i23r" path="res://Assets/SoundFX/land2-43790.mp3" id="14_iwvcu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tycn3"]
 atlas = ExtResource("2_4q2xd")
@@ -367,6 +375,8 @@ shape = SubResource("RectangleShape2D_nfu2u")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
+[node name="IdleRestTimer" type="Timer" parent="."]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(12, 28)
 zoom = Vector2(2.5, 2.5)
@@ -382,3 +392,34 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(12, 28)
 shape = SubResource("CircleShape2D_4jxok")
+
+[node name="RunningSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_d6dq3")
+pitch_scale = 1.2
+
+[node name="PickupSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_aca2s")
+
+[node name="AttackDashSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_uc4qf")
+
+[node name="AttackDashSFX1" type="AudioStreamPlayer2D" parent="AttackDashSFX"]
+stream = ExtResource("11_5xf8a")
+
+[node name="AttackDashSFX2" type="AudioStreamPlayer2D" parent="AttackDashSFX/AttackDashSFX1"]
+stream = ExtResource("12_lcovb")
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_2hw35")
+volume_db = -18.818
+pitch_scale = 1.13
+
+[node name="LandSFX" type="AudioStreamPlayer2D" parent="JumpSFX"]
+stream = ExtResource("14_iwvcu")
+volume_db = -12.876
+pitch_scale = 1.56
+
+[node name="LowStaminaSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_2txxu")
+volume_db = -12.671
+pitch_scale = 0.89

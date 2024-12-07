@@ -14,6 +14,10 @@ config/name="Redwood"
 run/main_scene="res://Level_1/scenes/level_1.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
+[dotnet]
+
+project/assembly_name="Redwood"
+
 [input]
 
 throw={
