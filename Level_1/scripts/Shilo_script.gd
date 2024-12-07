@@ -14,7 +14,7 @@ const BUNNYHOP_WINDOW = 0.5
 const ATTACK_RADIUS = 0.2
 
 # States
-enum State {IDLE, RUN, JUMP, ATTACK_DASH, CROUCH_SLIDE, WALL_GRAB}
+enum State {IDLE, RUN, JUMP, ATTACK_DASH, CROUCH_SLIDE, WALL_GRAB, PICKUP}
 
 # Current state
 var current_state = State.IDLE
