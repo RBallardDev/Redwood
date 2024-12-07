@@ -5,7 +5,7 @@ var max_x = 1520
 
 # Constants for movement
 const SPEED = 200.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -300.0
 const GRAVITY = 980.0
 const DASH_SPEED = 750.0
 const BUNNYHOP_SPEED = SPEED * 1.8
@@ -14,7 +14,7 @@ const BUNNYHOP_WINDOW = 0.5
 const ATTACK_RADIUS = 0.2
 
 # States
-enum State {IDLE, RUN, JUMP, ATTACK_DASH, CROUCH_SLIDE, WALL_GRAB, PICKUP}
+enum State {IDLE, RUN, JUMP, ATTACK_DASH, CROUCH_SLIDE, WALL_GRAB}
 
 # Current state
 var current_state = State.IDLE
