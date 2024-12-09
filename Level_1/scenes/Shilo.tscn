@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://duxgxp7rw77cv"]
+[gd_scene load_steps=62 format=3 uid="uid://duxgxp7rw77cv"]
 
 [ext_resource type="Script" path="res://Level_1/scripts/Shilo_script.gd" id="1_fhigf"]
 [ext_resource type="Texture2D" uid="uid://bpa4r86ifkghh" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_attack2.png" id="2_4q2xd"]
@@ -8,14 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://cdu38lo1nks4o" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_jump fixed axe.png" id="6_4d33d"]
 [ext_resource type="Texture2D" uid="uid://c3q6wytuwxxys" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_run fix 3.png" id="7_7neo7"]
 [ext_resource type="Texture2D" uid="uid://cxcw5m8d8xgyu" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_walk.png" id="8_xqjt8"]
-[ext_resource type="AudioStream" uid="uid://dncfjcxp55cbt" path="res://Assets/SoundFX/running.mp3" id="9_pk1o4"]
-[ext_resource type="AudioStream" uid="uid://cbgw0mwwdvb53" path="res://Assets/SoundFX/pickup.mp3" id="10_aqe5h"]
-[ext_resource type="AudioStream" uid="uid://f1dylj1b5gdb" path="res://Assets/SoundFX/Attack_Dashes/swish-9.mp3" id="11_kset3"]
-[ext_resource type="AudioStream" uid="uid://dd4r0ucldj8c1" path="res://Assets/SoundFX/Attack_Dashes/swish-10.mp3" id="12_gxsnf"]
-[ext_resource type="AudioStream" uid="uid://dmyl8kqlckrc0" path="res://Assets/SoundFX/Attack_Dashes/swish-12.mp3" id="13_lg6l3"]
-[ext_resource type="AudioStream" uid="uid://cf175blihp4r" path="res://Assets/SoundFX/sfx_jump_07-80241.mp3" id="14_t2017"]
-[ext_resource type="AudioStream" uid="uid://cww1fl525i23r" path="res://Assets/SoundFX/land2-43790.mp3" id="15_mlhsr"]
-[ext_resource type="AudioStream" uid="uid://v16fr8e1fhbp" path="res://Assets/SoundFX/low_stamina.mp3" id="16_hpsok"]
+[ext_resource type="AudioStream" uid="uid://dncfjcxp55cbt" path="res://Level_1/audio/running.mp3" id="9_pk1o4"]
+[ext_resource type="AudioStream" uid="uid://cbgw0mwwdvb53" path="res://Level_1/audio/pickup.mp3" id="10_aqe5h"]
+[ext_resource type="AudioStream" uid="uid://f1dylj1b5gdb" path="res://Level_1/audio/Attack_Dashes/swish-9.mp3" id="11_kset3"]
+[ext_resource type="AudioStream" uid="uid://dd4r0ucldj8c1" path="res://Level_1/audio/Attack_Dashes/swish-10.mp3" id="12_gxsnf"]
+[ext_resource type="AudioStream" uid="uid://dmyl8kqlckrc0" path="res://Level_1/audio/Attack_Dashes/swish-12.mp3" id="13_lg6l3"]
+[ext_resource type="AudioStream" uid="uid://cf175blihp4r" path="res://Level_1/audio/sfx_jump_07-80241.mp3" id="14_t2017"]
+[ext_resource type="AudioStream" uid="uid://cww1fl525i23r" path="res://Level_1/audio/land2-43790.mp3" id="15_mlhsr"]
+[ext_resource type="AudioStream" uid="uid://v16fr8e1fhbp" path="res://Level_1/audio/low_stamina.mp3" id="16_hpsok"]
+[ext_resource type="AudioStream" uid="uid://c1ovxun2x82jx" path="res://Level_1/audio/Slide On Grass single.mp3" id="17_dhssg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tycn3"]
 atlas = ExtResource("2_4q2xd")
@@ -427,3 +428,6 @@ pitch_scale = 1.56
 stream = ExtResource("16_hpsok")
 volume_db = -6.728
 pitch_scale = 0.89
+
+[node name="SlideSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_dhssg")

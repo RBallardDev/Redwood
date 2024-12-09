@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1ovxun2x82jx"
+path="res://.godot/imported/Slide On Grass single.mp3-22773abe03de62c0bd67466c9e7ae803.mp3str"
+
+[deps]
+
+source_file="res://Level_1/audio/Slide On Grass single.mp3"
+dest_files=["res://.godot/imported/Slide On Grass single.mp3-22773abe03de62c0bd67466c9e7ae803.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://cal5wswokkfjr"]
 
 [ext_resource type="Script" path="res://Level_1/scripts/car.gd" id="1_747sy"]
-[ext_resource type="Texture2D" uid="uid://cx553q3dh8htm" path="res://Jeep_2/fixed idle.png" id="2_h1n3e"]
-[ext_resource type="Texture2D" uid="uid://cgn03arcri8tx" path="res://Jeep_2/Trunk fixed.png" id="3_sqs1n"]
-[ext_resource type="Texture2D" uid="uid://cns12n5nkw84b" path="res://Jeep_2/Trunk open idle fix.png" id="4_fsijm"]
+[ext_resource type="Texture2D" uid="uid://cx553q3dh8htm" path="res://Level_1/assets/car/fixed idle.png" id="2_h1n3e"]
+[ext_resource type="Texture2D" uid="uid://cgn03arcri8tx" path="res://Level_1/assets/car/Trunk fixed.png" id="3_sqs1n"]
+[ext_resource type="Texture2D" uid="uid://cns12n5nkw84b" path="res://Level_1/assets/car/Trunk open idle fix.png" id="4_fsijm"]
 [ext_resource type="AudioStream" uid="uid://dg0lfkgyqw52d" path="res://Level_1/audio/443269__alec_havinmaa__car-idling-loop.wav" id="5_2r4jo"]
 [ext_resource type="AudioStream" uid="uid://cdo7x7o3ydvbj" path="res://Level_1/audio/trunk open.mp3" id="6_kqvqe"]
 [ext_resource type="AudioStream" uid="uid://bxy3ceajx74ca" path="res://Level_1/audio/trunk close.mp3" id="7_anm1g"]

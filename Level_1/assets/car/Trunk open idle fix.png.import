@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx553q3dh8htm"
-path="res://.godot/imported/fixed idle.png-6b15eb0b5687e33dd5aeef286adcb2b9.ctex"
+uid="uid://cns12n5nkw84b"
+path="res://.godot/imported/Trunk open idle fix.png-361010b23b6862c642a185cc5dff698f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jeep_2/fixed idle.png"
-dest_files=["res://.godot/imported/fixed idle.png-6b15eb0b5687e33dd5aeef286adcb2b9.ctex"]
+source_file="res://Level_1/assets/car/Trunk open idle fix.png"
+dest_files=["res://.godot/imported/Trunk open idle fix.png-361010b23b6862c642a185cc5dff698f.ctex"]
 
 [params]
 

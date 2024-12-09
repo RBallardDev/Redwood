@@ -23,26 +23,25 @@ var current_state = State.IDLE
 var wall_grab_timer = 0.0
 var bunnyhop_timer = 0.0
 var attack_timer = 0.0
-var crouch_state = false
 var idle_rest_timer = 0.0
 var dash_sfx_played = false
-
 
 # Track if dash/bunnyhop is active
 var is_dashing = false
 var bunnyhop_active = false
 var rested = false
 
-# Reference to the AnimatedSprite node
+# References to nodes
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var running_sound = $RunningSFX
 @onready var low_stamina = $LowStaminaSFX
 @onready var attack_dash = $AttackDashSFX
 @onready var attack_dash1 = $AttackDashSFX/AttackDashSFX1
-@onready var attack_dash2 = $AttackDashSFX/AttackDashSFX1/AttackDashSFX2
+@onready var attack_dash2 = $AttackDashSFX/AttackDashSFX2
 @onready var jump = $JumpSFX
 @onready var land = $JumpSFX/LandSFX
 @onready var pickup = $PickupSFX
+@onready var slide = $SlideSFX
 
 var flip_offset = 20.0  # Adjust this value based on your sprite dimensions
 
@@ -58,8 +57,6 @@ func _physics_process(delta):
 	# Apply gravity by default
 	if not is_on_floor() and current_state != State.WALL_GRAB:
 		velocity.y += GRAVITY * delta
-	if crouch_state: 
-		velocity.y += (GRAVITY * 1.15) * delta
 
 	# Handle player state
 	match current_state:
@@ -77,7 +74,7 @@ func _physics_process(delta):
 			handle_wall_grab_state(delta)
 		State.PICKUP:
 			handle_pickup()
-	
+
 	move_and_slide()  # Move player based on the final velocity
 	position.x = clamp(position.x, min_x, max_x)  # Prevent moving off the map
 
@@ -97,12 +94,8 @@ func handle_idle_state():
 		change_state(State.CROUCH_SLIDE)
 	elif is_on_wall():
 		change_state(State.WALL_GRAB)
-	if idle_rest_timer > 0: 
-		if not low_stamina.is_playing(): 
-			low_stamina.play()
-
-	
-	
+	if idle_rest_timer > 0 and not low_stamina.is_playing():
+		low_stamina.play()
 
 func handle_run_state():
 	var direction = 0
@@ -110,10 +103,10 @@ func handle_run_state():
 	# Determine direction and flip sprite
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
 		direction = -1
-		animated_sprite.flip_h = true  # Face left
+		update_sprite_flip(direction)
 	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("run_right"):
 		direction = 1
-		animated_sprite.flip_h = false  # Face right
+		update_sprite_flip(direction)
 	else:
 		change_state(State.IDLE)
 		return
@@ -129,6 +122,8 @@ func handle_run_state():
 		change_state(State.PICKUP)
 	if Input.is_action_pressed("ui_up") or Input.is_action_pressed("jump"):
 		change_state(State.JUMP)
+	elif Input.is_action_just_pressed("crouch"):
+		change_state(State.CROUCH_SLIDE)
 
 func handle_jump_state():
 	var direction = 0
@@ -136,34 +131,30 @@ func handle_jump_state():
 		change_state(State.ATTACK_DASH)
 	elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
 		direction = -1
-		animated_sprite.flip_h = true  # Face left
+		update_sprite_flip(direction)
 	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("run_right"):
 		direction = 1
-		animated_sprite.flip_h = false  # Face right
+		update_sprite_flip(direction)
 
-	if direction == 0:
-		animated_sprite.play("jump")
-		velocity.x = 0
-	else:
-		velocity.x = direction * SPEED
-		animated_sprite.play("jump")
+	velocity.x = direction * SPEED
+	animated_sprite.play("jump")
 
 	if is_on_wall():
 		change_state(State.WALL_GRAB)
 	elif is_on_floor():
+		if jump.is_playing():
+			jump.stop()  # Stop the jump sound before landing
 		land.play()
 		change_state(State.IDLE)
 	elif Input.is_action_just_pressed("crouch"):
 		change_state(State.CROUCH_SLIDE)
-	elif Input.is_action_just_pressed("interact"):
-		change_state(State.PICKUP)
 
 func handle_attack_dash_state():
 	attack_timer -= get_physics_process_delta_time()
 	is_dashing = true
 	if attack_timer > 0:
 		animated_sprite.play("attack")
-		if dash_sfx_played == false:
+		if not dash_sfx_played:
 			match randi() % 3:
 				0:
 					attack_dash.play()
@@ -182,17 +173,16 @@ func handle_crouch_slide_state():
 	var direction = 0
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
 		direction = -1
-		animated_sprite.flip_h = true  # Face left
+		update_sprite_flip(direction)
 	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("run_right"):
 		direction = 1
-		animated_sprite.flip_h = false  # Face right
-	elif Input.is_action_just_pressed("interact"):
-		change_state(State.PICKUP)
-	if Input.is_action_pressed("crouch"):
-		animated_sprite.play("crouch")
-		crouch_state = true
-		velocity.x = SPEED * direction
-	else:
+		update_sprite_flip(direction)
+
+	animated_sprite.play("crouch")
+	velocity.x = SPEED * direction  # Maintain horizontal movement
+	if not slide.is_playing():
+		slide.play()  # Play slide sound
+	if not Input.is_action_pressed("crouch"):
 		change_state(State.IDLE)
 
 func handle_wall_grab_state(delta):
@@ -205,20 +195,9 @@ func handle_wall_grab_state(delta):
 	elif wall_grab_timer > WALL_GRAB_TIME:
 		change_state(State.IDLE)  # Resume falling if no jump input
 
-func attack_hits_enemy():
-	return
-
-
-
 func handle_pickup():
 	change_state(State.IDLE)
-	return 
-
-
-# for character dialogue, if possible this method should be handled in the pickup 
-# function for simplicity
-func interact():
-	return 
+	pickup.play()
 
 func change_state(new_state, direction = 0):
 	current_state = new_state
@@ -232,11 +211,11 @@ func change_state(new_state, direction = 0):
 		State.RUN:
 			animated_sprite.play("run")
 			velocity.x = direction * SPEED
-			animated_sprite.flip_h = direction < 0
 		State.JUMP:
 			velocity.y = JUMP_VELOCITY
 			animated_sprite.play("jump")
-			jump.play()
+			if not jump.is_playing():
+				jump.play()
 		State.ATTACK_DASH:
 			is_dashing = true
 			attack_timer = 0.3
