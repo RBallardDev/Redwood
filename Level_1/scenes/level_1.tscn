@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b52cjry6lr21c"]
+[gd_scene load_steps=20 format=3 uid="uid://b52cjry6lr21c"]
 
 [ext_resource type="PackedScene" uid="uid://duqsqtiaghic0" path="res://Level_1/scenes/parallax_background.tscn" id="1_6vd8j"]
 [ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://Level_1/scenes/Shilo.tscn" id="2_sejmj"]
@@ -11,8 +11,17 @@
 [ext_resource type="PackedScene" uid="uid://dbqyfj6qx0k50" path="res://Level_1/scenes/npc_1.tscn" id="9_8arwx"]
 [ext_resource type="PackedScene" uid="uid://cxitu75yg1lgs" path="res://Level_1/scenes/small_stump.tscn" id="10_3wsq5"]
 [ext_resource type="PackedScene" uid="uid://gecj2nycn1kt" path="res://Level_1/scenes/npc_2.tscn" id="11_f3ajx"]
+[ext_resource type="Texture2D" uid="uid://bto3ukuus4wox" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Pointers/2.png" id="12_j0mkm"]
+[ext_resource type="Texture2D" uid="uid://bxk5m1aopp7l6" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Trees/3.png" id="13_md1b5"]
+[ext_resource type="Texture2D" uid="uid://bwyvjy6jous7c" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Trees/2.png" id="14_842ou"]
+[ext_resource type="Texture2D" uid="uid://h2w1flhdggi2" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Trees/1.png" id="15_0i7hr"]
+[ext_resource type="Texture2D" uid="uid://hcboyc6wptf5" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Stones/1.png" id="16_l0pg4"]
+[ext_resource type="Texture2D" uid="uid://b0u1f8n80ynpa" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Stones/4.png" id="17_i0oky"]
 
 [sub_resource type="GDScript" id="GDScript_eu0i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqtu7"]
+size = Vector2(25.7021, 9.30499)
 
 [node name="Main" type="Node2D"]
 script = SubResource("GDScript_eu0i3")
@@ -34,6 +43,9 @@ position = Vector2(-61.2432, 579.75)
 scale = Vector2(1.71622, 1.71622)
 texture = ExtResource("4_e6o7m")
 
+[node name="Npc1" parent="Level_1" instance=ExtResource("9_8arwx")]
+position = Vector2(800.27, 548)
+
 [node name="Shilo" parent="Level_1" instance=ExtResource("2_sejmj")]
 position = Vector2(760, 562)
 
@@ -42,18 +54,10 @@ position = Vector2(1481, 590)
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("4_v88gy")
 
-[node name="TunnelTreeFront" type="Sprite2D" parent="Level_1"]
-position = Vector2(-134, 581)
-scale = Vector2(1.71951, 1.71951)
-texture = ExtResource("7_6llyj")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Level_1"]
 stream = ExtResource("8_hhmlp")
 volume_db = 2.0
 autoplay = true
-
-[node name="Npc1" parent="Level_1" instance=ExtResource("9_8arwx")]
-position = Vector2(800.27, 548)
 
 [node name="Small_stump" parent="Level_1" instance=ExtResource("10_3wsq5")]
 position = Vector2(423, 598)
@@ -61,8 +65,51 @@ position = Vector2(423, 598)
 [node name="npc2" parent="Level_1" instance=ExtResource("11_f3ajx")]
 position = Vector2(1340, 548)
 
+[node name="2" type="Sprite2D" parent="Level_1"]
+position = Vector2(616, 601.25)
+scale = Vector2(1, 1.02381)
+texture = ExtResource("12_j0mkm")
+
+[node name="TunnelTreeFront" type="StaticBody2D" parent="Level_1"]
+collision_mask = 3
+
+[node name="Sprite" type="Sprite2D" parent="Level_1/TunnelTreeFront"]
+position = Vector2(-134, 581)
+scale = Vector2(1.71951, 1.71951)
+texture = ExtResource("7_6llyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_1/TunnelTreeFront"]
+position = Vector2(-99.9025, 567)
+scale = Vector2(1.71951, 1.71951)
+shape = SubResource("RectangleShape2D_lqtu7")
+
 [node name="Level_2" type="Node" parent="."]
 
 [node name="Level_3" type="Node" parent="."]
 
 [node name="Level_4" type="Node" parent="."]
+
+[node name="3" type="Sprite2D" parent="."]
+position = Vector2(-580, 505)
+scale = Vector2(1.0935, 1.42667)
+texture = ExtResource("13_md1b5")
+
+[node name="2" type="Sprite2D" parent="."]
+position = Vector2(1151, 520)
+scale = Vector2(1.49038, 1.39394)
+texture = ExtResource("14_842ou")
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(1455, 539)
+scale = Vector2(1.33168, 1.42476)
+texture = ExtResource("15_0i7hr")
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(210, 594)
+scale = Vector2(0.618644, 0.618644)
+texture = ExtResource("16_l0pg4")
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(917.4, 601)
+scale = Vector2(0.733333, 0.733333)
+texture = ExtResource("17_i0oky")

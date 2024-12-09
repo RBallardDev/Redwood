@@ -1,8 +1,9 @@
-[gd_scene load_steps=62 format=3 uid="uid://duxgxp7rw77cv"]
+[gd_scene load_steps=65 format=3 uid="uid://duxgxp7rw77cv"]
 
 [ext_resource type="Script" path="res://Level_1/scripts/Shilo_script.gd" id="1_fhigf"]
 [ext_resource type="Texture2D" uid="uid://bpa4r86ifkghh" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_attack2.png" id="2_4q2xd"]
 [ext_resource type="Texture2D" uid="uid://cxdh2wnxbojw8" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_climb.png" id="3_h3jg0"]
+[ext_resource type="Texture2D" uid="uid://bu8ty6d30jxmo" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/crouch slide woodcutter.png" id="4_5gqwr"]
 [ext_resource type="Texture2D" uid="uid://djsbt77aniqxt" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_death.png" id="4_ejy6x"]
 [ext_resource type="Texture2D" uid="uid://clm8fkihuu7kk" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/idle no axe fix.png" id="5_5mp6u"]
 [ext_resource type="Texture2D" uid="uid://cdu38lo1nks4o" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_jump fixed axe.png" id="6_4d33d"]
@@ -16,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cf175blihp4r" path="res://Level_1/audio/sfx_jump_07-80241.mp3" id="14_t2017"]
 [ext_resource type="AudioStream" uid="uid://cww1fl525i23r" path="res://Level_1/audio/land2-43790.mp3" id="15_mlhsr"]
 [ext_resource type="AudioStream" uid="uid://v16fr8e1fhbp" path="res://Level_1/audio/low_stamina.mp3" id="16_hpsok"]
-[ext_resource type="AudioStream" uid="uid://c1ovxun2x82jx" path="res://Level_1/audio/Slide On Grass single.mp3" id="17_dhssg"]
+[ext_resource type="AudioStream" uid="uid://63oqei2jvvrd" path="res://Level_1/audio/new grass slide.mp3" id="18_psttk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tycn3"]
 atlas = ExtResource("2_4q2xd")
@@ -66,8 +67,12 @@ region = Rect2(192, 0, 48, 48)
 atlas = ExtResource("3_h3jg0")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wr0bp"]
-atlas = ExtResource("4_ejy6x")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lfqk"]
+atlas = ExtResource("4_5gqwr")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyked"]
+atlas = ExtResource("4_5gqwr")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p622e"]
@@ -232,11 +237,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wr0bp")
+"texture": SubResource("AtlasTexture_2lfqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyked")
 }],
 "loop": true,
 "name": &"crouch",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -351,6 +359,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfu2u"]
 size = Vector2(29.5, 43.75)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_os2ax"]
+size = Vector2(27, 33)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jxok"]
 radius = 42.0119
 
@@ -363,14 +374,20 @@ script = ExtResource("1_fhigf")
 position = Vector2(22, 18)
 scale = Vector2(1.32812, 1.32812)
 sprite_frames = SubResource("SpriteFrames_6h2h1")
-animation = &"idle"
+animation = &"crouch"
 autoplay = "idle"
-frame_progress = 0.956657
+frame_progress = 0.507388
 speed_scale = 1.5
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionNormal" type="CollisionShape2D" parent="."]
 position = Vector2(22.25, 28.125)
 shape = SubResource("RectangleShape2D_nfu2u")
+metadata/_edit_group_ = true
+
+[node name="CollisionSlide" type="CollisionShape2D" parent="."]
+position = Vector2(24, 33.5)
+shape = SubResource("RectangleShape2D_os2ax")
 
 [node name="ThrowTimer" type="Timer" parent="."]
 
@@ -410,7 +427,7 @@ volume_db = -10.895
 stream = ExtResource("12_gxsnf")
 volume_db = -10.4
 
-[node name="AttackDashSFX2" type="AudioStreamPlayer2D" parent="AttackDashSFX/AttackDashSFX1"]
+[node name="AttackDashSFX2" type="AudioStreamPlayer2D" parent="AttackDashSFX"]
 stream = ExtResource("13_lg6l3")
 volume_db = -10.4
 
@@ -430,4 +447,7 @@ volume_db = -6.728
 pitch_scale = 0.89
 
 [node name="SlideSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_dhssg")
+position = Vector2(20, 3)
+stream = ExtResource("18_psttk")
+volume_db = 8.0
+pitch_scale = 0.81

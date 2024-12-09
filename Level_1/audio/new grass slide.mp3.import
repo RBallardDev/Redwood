@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://63oqei2jvvrd"
+path="res://.godot/imported/new grass slide.mp3-5c9afd9d67c9d49e5928eed7d649b489.mp3str"
+
+[deps]
+
+source_file="res://Level_1/audio/new grass slide.mp3"
+dest_files=["res://.godot/imported/new grass slide.mp3-5c9afd9d67c9d49e5928eed7d649b489.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
