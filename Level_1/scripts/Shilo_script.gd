@@ -126,9 +126,9 @@ func handle_run_state():
 
 func handle_jump_state():
 	var direction = 0
-	if Input.is_action_just_pressed("attack"):
-		change_state(State.ATTACK_DASH)
-	elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
+
+	# Allow horizontal movement while in the jump state
+	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
 		direction = -1
 		update_sprite_flip(direction)
 	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("run_right"):
@@ -136,25 +136,20 @@ func handle_jump_state():
 		update_sprite_flip(direction)
 
 	velocity.x = direction * SPEED
-	animated_sprite.play("jump")
 
-	if is_on_wall():
-		change_state(State.WALL_GRAB)
-	elif is_on_floor():
+	# Allow attack dash during jump
+	if Input.is_action_just_pressed("attack"):
+		change_state(State.ATTACK_DASH)
+
+	# Handle transitions
+	if is_on_floor():
 		if jump.is_playing():
-			jump.stop()
+			jump.stop()  # Stop the jump sound when landing
 		land.play()
 		change_state(State.IDLE)
 	elif Input.is_action_just_pressed("crouch"):
 		change_state(State.CROUCH)
 
-	if is_on_wall():
-		change_state(State.WALL_GRAB)
-	elif is_on_floor():
-		if jump.is_playing():
-			jump.stop()
-		land.play()
-		change_state(State.IDLE)
 
 func handle_crouch_state():
 	velocity.x = 0  # Stay idle while crouching
@@ -169,6 +164,7 @@ func handle_crouch_state():
 
 func handle_crouch_walk_state():
 	var direction = 0
+
 	# Check for movement
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
 		direction = -1
@@ -177,12 +173,18 @@ func handle_crouch_walk_state():
 		direction = 1
 		update_sprite_flip(direction)
 
+	# If there is no movement, transition back to crouch
+	if direction == 0:
+		change_state(State.CROUCH)
+		return
+
+	# Apply movement and play crouch walk animation
 	velocity.x = direction * CROUCH_WALK_SPEED
-	animated_sprite.play("crouch")  # Loop through crouch animation for movement
+	animated_sprite.play("crouch")  # Crouch walk animation
 
 	# Cancel crouch walk when shift is released
 	if not Input.is_action_pressed("crouch"):
-		if direction != 0:  # Transition to RUN if movement keys are still held
+		if direction != 0:
 			change_state(State.RUN, direction)
 		else:
 			change_state(State.IDLE)
@@ -199,9 +201,8 @@ func handle_slide_state(delta):
 
 	# Cancel slide when crouch key is released
 	if not Input.is_action_pressed("crouch"):
-		if slide_timer > 0:  # Ensure it's still sliding before stopping sound
-			if slide.is_playing():
-				slide.stop()
+		if slide_timer > 0 and slide.is_playing():
+			slide.stop()
 		change_state(State.IDLE)
 		return
 
@@ -214,17 +215,18 @@ func handle_slide_state(delta):
 
 	velocity.x = SLIDE_SPEED * (1 if not animated_sprite.flip_h else -1)
 	animated_sprite.play("crouch")
-	animated_sprite.frame = 1  # Updated to second frame for slide
+	animated_sprite.frame = 1  # Slide frame
 	if not slide.is_playing():
 		slide.play()
 		
 func handle_attack_dash_state():
 	attack_timer -= get_physics_process_delta_time()
 	is_dashing = true
+
 	if attack_timer > 0:
 		animated_sprite.play("attack")
 		if jump.is_playing():
-			jump.stop()  # Stop jump audio if dashing
+			jump.stop()  # Stop jump sound during dash
 		if not dash_sfx_played:
 			match randi() % 3:
 				0:
@@ -254,19 +256,28 @@ func handle_pickup():
 	change_state(State.IDLE)
 	pickup.play()
 
+# Update the collision boxes in change_state
 func change_state(new_state, direction = 0):
-	# Handle collision shape changes for SLIDE state
-	if current_state == State.SLIDE and new_state != State.SLIDE:
+	# Stop jump sound if leaving jump state
+	if current_state == State.JUMP and new_state != State.JUMP:
+		if jump.is_playing():
+			jump.stop()
+	
+	if current_state == State.SLIDE or current_state == State.CROUCH or current_state == State.CROUCH_WALK:
 		collision_slide.disabled = true
 		collision_normal.disabled = false
-
-	if new_state == State.SLIDE:
+	
+	if new_state == State.SLIDE or new_state == State.CROUCH or new_state == State.CROUCH_WALK:
 		collision_slide.disabled = false
 		collision_normal.disabled = true
 
+	# Update state
 	current_state = new_state
+
+	# Stop running sound if leaving run state
 	if new_state != State.RUN:
 		running_sound.stop()
+
 	match new_state:
 		State.IDLE:
 			velocity.x = 0
@@ -282,13 +293,13 @@ func change_state(new_state, direction = 0):
 		State.CROUCH:
 			velocity.x = 0
 			animated_sprite.play("crouch")
-			animated_sprite.frame = 0
+			animated_sprite.frame = 0  # Crouch idle frame
 		State.CROUCH_WALK:
-			animated_sprite.play("crouch")
+			animated_sprite.play("crouch")  # Crouch walk animation
 		State.SLIDE:
 			slide_timer = SLIDE_DURATION
 			animated_sprite.play("crouch")
-			animated_sprite.frame = 1
+			animated_sprite.frame = 1  # Slide animation
 			if not slide.is_playing():
 				slide.play()
 		State.ATTACK_DASH:

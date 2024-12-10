@@ -1,8 +1,14 @@
 extends Area2D
 
+# State tracking
 var player_in_range = false
 var trunk_open = false
+var rope_spawned = false  # Track if the rope has already been spawned
 
+# Preloaded rope scene
+@onready var rope_instance = preload("res://Level_1/scenes/rope.tscn")
+
+# References to sound effects and player
 @onready var car_idle_sound = $CarIdleSound
 @onready var trunk_open_sound = $TrunkOpenSound
 @onready var trunk_close_sound = $TrunkCloseSound
@@ -47,7 +53,6 @@ func update_idle_sound_volume() -> void:
 
 		# Convert normalized volume to decibels (-60 dB for silent to 0 dB for full volume)
 		car_idle_sound.volume_db = lerp(-60, 0, normalized_volume)
-		#print("Distance:", distance, "Volume (dB):", car_idle_sound.volume_db)
 
 # Triggered when an Area2D enters the car's collision area
 func _on_area_entered(area: Node) -> void:
@@ -61,7 +66,7 @@ func _on_area_exited(area: Node) -> void:
 		player_in_range = false
 		print("Shilo left the car!")
 
-# Plays the open trunk animation and sound
+# Plays the open trunk animation and spawns the rope
 func open_trunk() -> void:
 	print("Opening the trunk...")
 	trunk_open = true
@@ -72,7 +77,28 @@ func open_trunk() -> void:
 	$AnimatedSprite2D.play("trunk_open_idle")
 	print("Trunk is fully open and idle.")
 
-# Plays the close trunk animation and sound
+	# Spawn the rope if it hasn't been spawned already
+	if not rope_spawned:
+		if rope_instance:
+			var rope = rope_instance.instantiate()
+
+			# Set the spawn position relative to the trunk's position
+			var offset = Vector2(20, 0)  # 20 pixels to the right, same y-level
+			rope.global_position = global_position + offset
+
+			# Ensure the rope is initially static
+			rope.body_mode = "static"  # Prevent movement
+			get_parent().add_child(rope)
+
+			# Confirm the rope spawn in the debug output
+			print("Rope spawned at: ", rope.global_position)
+			rope_spawned = true
+		else:
+			print("Error: rope_instance is null")
+	else:
+		print("Rope already spawned.")
+
+# Plays the close trunk animation
 func close_trunk() -> void:
 	print("Closing the trunk...")
 	trunk_open = false

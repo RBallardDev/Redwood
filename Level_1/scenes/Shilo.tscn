@@ -244,7 +244,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"crouch",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -374,9 +374,8 @@ script = ExtResource("1_fhigf")
 position = Vector2(22, 18)
 scale = Vector2(1.32812, 1.32812)
 sprite_frames = SubResource("SpriteFrames_6h2h1")
-animation = &"crouch"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.507388
 speed_scale = 1.5
 metadata/_edit_group_ = true
 
