@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://xllgmivpit45"]
+[gd_scene load_steps=8 format=3 uid="uid://xllgmivpit45"]
 
 [ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://Level_1/scenes/Shilo.tscn" id="1_4hpag"]
 [ext_resource type="Texture2D" uid="uid://depox8jqm4n7i" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/2 Background/long forest.png" id="1_qxysy"]
 [ext_resource type="Script" path="res://main.gd" id="1_wyft0"]
-[ext_resource type="PackedScene" uid="uid://yo73qoj0lvxa" path="res://dalle_tree_1.tscn" id="2_ccrv6"]
 [ext_resource type="PackedScene" uid="uid://bt1ce81wa58jr" path="res://ground_static_body_2d.tscn" id="2_g4mv4"]
 [ext_resource type="PackedScene" uid="uid://hilsr40tavac" path="res://rock.tscn" id="3_bw1tw"]
-[ext_resource type="PackedScene" uid="uid://c3dyiw8mng4p1" path="res://enemy.tscn" id="3_kgtsm"]
-[ext_resource type="AudioStream" uid="uid://bplxx3ti3hr1" path="res://nightfall-in-elven-woods-SBA-348792693-preview.mp3" id="6_2n7vl"]
+[ext_resource type="AudioStream" uid="uid://bxmebio3tyrth" path="res://Level_1/audio/427400__imjeax__forest-ambient-loop.wav" id="6_67qlw"]
+[ext_resource type="Texture2D" uid="uid://bxk5m1aopp7l6" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Trees/3.png" id="10_ksvvm"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wyft0")
@@ -17,26 +16,16 @@ position = Vector2(568, 322.5)
 scale = Vector2(1.34375, 1.34375)
 texture = ExtResource("1_qxysy")
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_ccrv6")]
-position = Vector2(-71, -75)
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(807, 320)
+scale = Vector2(3.36179, 3.36179)
+texture = ExtResource("10_ksvvm")
 
 [node name="Shilo_CharBody2D" parent="." instance=ExtResource("1_4hpag")]
 position = Vector2(152, 525)
 
 [node name="GroundStaticBody2D" parent="." instance=ExtResource("2_g4mv4")]
 position = Vector2(2, 0)
-
-[node name="Enemy4" parent="." instance=ExtResource("3_kgtsm")]
-position = Vector2(1379, 545)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_kgtsm")]
-position = Vector2(678, 543)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_kgtsm")]
-position = Vector2(854, 543)
-
-[node name="Enemy" parent="." instance=ExtResource("3_kgtsm")]
-position = Vector2(-278, 543)
 
 [node name="Rock4" parent="." instance=ExtResource("3_bw1tw")]
 position = Vector2(1208, 554)
@@ -52,5 +41,5 @@ position = Vector2(1214, 564)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(678, 543)
-stream = ExtResource("6_2n7vl")
+stream = ExtResource("6_67qlw")
 autoplay = true

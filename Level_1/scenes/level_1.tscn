@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b52cjry6lr21c"]
+[gd_scene load_steps=25 format=3 uid="uid://b52cjry6lr21c"]
 
 [ext_resource type="PackedScene" uid="uid://duqsqtiaghic0" path="res://Level_1/scenes/parallax_background.tscn" id="1_6vd8j"]
 [ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://Level_1/scenes/Shilo.tscn" id="2_sejmj"]
@@ -13,8 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://gecj2nycn1kt" path="res://Level_1/scenes/npc_2.tscn" id="11_f3ajx"]
 [ext_resource type="Texture2D" uid="uid://bto3ukuus4wox" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Pointers/2.png" id="12_j0mkm"]
 [ext_resource type="Texture2D" uid="uid://bxk5m1aopp7l6" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Trees/3.png" id="13_md1b5"]
+[ext_resource type="PackedScene" uid="uid://bd87vt8wvnjxi" path="res://Level_1/scenes/rope.tscn" id="14_23wuk"]
 [ext_resource type="Texture2D" uid="uid://bwyvjy6jous7c" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Trees/2.png" id="14_842ou"]
 [ext_resource type="Texture2D" uid="uid://iw68dfimgcwg" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Ridges/5.png" id="14_dxayw"]
+[ext_resource type="Script" path="res://Level_1/scenes/tent.gd" id="14_ln1xu"]
 [ext_resource type="Texture2D" uid="uid://h2w1flhdggi2" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Trees/1.png" id="15_0i7hr"]
 [ext_resource type="Texture2D" uid="uid://hcboyc6wptf5" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Stones/1.png" id="16_l0pg4"]
 [ext_resource type="Texture2D" uid="uid://b0u1f8n80ynpa" path="res://Assets/assets/craftpix-net-672461-free-swamp-game-tileset-pixel-art/3 Objects/Stones/4.png" id="17_i0oky"]
@@ -26,6 +28,9 @@ size = Vector2(25.7021, 9.30499)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khbu4"]
 size = Vector2(57.25, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ynkq"]
+size = Vector2(111, 56)
 
 [node name="Main" type="Node2D"]
 script = SubResource("GDScript_eu0i3")
@@ -50,13 +55,24 @@ texture = ExtResource("4_e6o7m")
 [node name="Npc1" parent="Level_1" instance=ExtResource("9_8arwx")]
 position = Vector2(800.27, 548)
 
+[node name="Rope" parent="Level_1" instance=ExtResource("14_23wuk")]
+position = Vector2(-1006, 447)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Label" type="Label" parent="Level_1"]
+offset_left = 610.0
+offset_top = 480.0
+offset_right = 920.0
+offset_bottom = 581.0
+text = "WAD for movement/jump
+Shift (hold) for crouch/slide/crouch walk
+Space for attack dash
+E to interact"
+horizontal_alignment = 1
+
 [node name="Shilo" parent="Level_1" instance=ExtResource("2_sejmj")]
 position = Vector2(760, 562)
-
-[node name="Tent" type="Sprite2D" parent="Level_1"]
-position = Vector2(1481, 590)
-scale = Vector2(2.25, 2.25)
-texture = ExtResource("4_v88gy")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Level_1"]
 stream = ExtResource("8_hhmlp")
@@ -101,6 +117,34 @@ position = Vector2(322.987, 605.75)
 shape = SubResource("RectangleShape2D_khbu4")
 metadata/_edit_group_ = true
 
+[node name="DimmingLayer" type="ColorRect" parent="Level_1"]
+visible = false
+offset_left = -1211.0
+offset_top = -213.0
+offset_right = 1532.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.766)
+
+[node name="Tent" type="Area2D" parent="Level_1"]
+script = ExtResource("14_ln1xu")
+
+[node name="Sprite" type="Sprite2D" parent="Level_1/Tent"]
+position = Vector2(1481, 590)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("4_v88gy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_1/Tent"]
+position = Vector2(1481.5, 590)
+shape = SubResource("RectangleShape2D_8ynkq")
+
+[node name="Label2" type="Label" parent="Level_1"]
+visible = false
+offset_left = -1002.0
+offset_top = 520.0
+offset_right = -913.0
+offset_bottom = 543.0
+text = "Open trunk"
+
 [node name="Level_2" type="Node" parent="."]
 
 [node name="Level_3" type="Node" parent="."]
@@ -131,3 +175,10 @@ texture = ExtResource("16_l0pg4")
 position = Vector2(917.4, 601)
 scale = Vector2(0.733333, 0.733333)
 texture = ExtResource("17_i0oky")
+
+[connection signal="body_entered" from="Level_1/Rope" to="Level_1/Shilo" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Level_1/Rope" to="Level_1/Shilo" method="_on_Area2D_body_exited"]
+[connection signal="area_entered" from="Level_1/Tent" to="Level_1/Tent" method="_on_area_entered"]
+[connection signal="area_exited" from="Level_1/Tent" to="Level_1/Tent" method="_on_area_exited"]
+[connection signal="body_entered" from="Level_1/Tent" to="Level_1/Tent" method="_on_area_entered"]
+[connection signal="body_exited" from="Level_1/Tent" to="Level_1/Tent" method="_on_area_exited"]

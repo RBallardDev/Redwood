@@ -5,7 +5,13 @@ extends Area2D
 
 var is_walking = true  # Whether NPC1 is currently walking
 
-@onready var shilo_node = null  # Reference to Shilo for position tracking
+
+# State tracking
+var picked_up = false  # Tracks if the rope has been picked up
+@onready var shilo_node = get_parent().get_node("Shilo")  # Reference to Shilo node in the parent scene
+@onready var label_node = $Label  # Reference the Label node
+var player_in_range = false  # Tracks if Shilo is in range
+
 
 func _ready():
 	# Find Shilo in the scene
@@ -15,6 +21,8 @@ func _ready():
 
 	# Start walking animation
 	$AnimatedSprite2D.play("walk")  # Use your walking animation name
+	
+	label_node.visible = false
 
 func _process(delta: float) -> void:
 	if is_walking:
@@ -31,3 +39,32 @@ func _process(delta: float) -> void:
 		# Flip NPC to always face Shilo when idle
 		if shilo_node:
 			$AnimatedSprite2D.flip_h = (shilo_node.global_position.x < global_position.x)
+			
+			
+
+func _on_area_entered(area: Node) -> void:
+	if area.name == "Shilo":  # Ensure this works for Shilo specifically
+		print("Shilo entered NPC2's area!")
+		player_in_range = true
+		label_node.visible = true  # Show the label
+		label_node.text = "Press E to talk"
+
+func _on_area_exited(area: Node) -> void:
+	if area.name == "Shilo":
+		print("Shilo left NPC2's area!")
+		player_in_range = false
+		label_node.visible = false  # Hide the label
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and player_in_range:
+		handle_dialogue()
+
+func handle_dialogue():
+	if not picked_up:  # If the rope hasn't been picked up
+		print("NPC 1: Somthings off")
+		label_node.text = "Something feels off
+		 about the forest."
+	else:  # If the rope has been picked up
+		print("NPC 1: im not sure what but its something")
+		label_node.text = "Im not sure what,
+		 but its something bad."

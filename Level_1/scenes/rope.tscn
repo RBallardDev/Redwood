@@ -3,10 +3,12 @@
 [ext_resource type="Script" path="res://Level_1/scripts/rope.gd" id="1_k8cej"]
 [ext_resource type="Texture2D" uid="uid://0vku5023nvi5" path="res://Level_1/assets/rope png bad.png" id="1_ptemh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oysoe"]
-radius = 20.025
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aahgv"]
+radius = 6.70263
+height = 22.3421
 
-[node name="Rope" type="RigidBody2D"]
+[node name="Rope" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_k8cej")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,6 +16,12 @@ position = Vector2(142, 156.106)
 scale = Vector2(0.0596026, 0.0596027)
 texture = ExtResource("1_ptemh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(142, 157)
-shape = SubResource("CircleShape2D_oysoe")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ropes"]]
+position = Vector2(143, 156)
+rotation = -0.5044
+shape = SubResource("CapsuleShape2D_aahgv")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_exited" from="." to="." method="_on_area_exited"]

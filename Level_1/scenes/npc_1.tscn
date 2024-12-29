@@ -130,9 +130,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3l6xh"]
-size = Vector2(22.5, 56)
+size = Vector2(58, 61)
 
 [node name="Npc1" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_okjfl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -143,5 +144,19 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(19.25, 36)
+position = Vector2(21, 33.5)
 shape = SubResource("RectangleShape2D_3l6xh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 106.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+text = "Press E to talk."
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_exited" from="." to="." method="_on_area_exited"]

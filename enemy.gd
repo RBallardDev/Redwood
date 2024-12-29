@@ -17,7 +17,7 @@ var idle_timer = 0.0
 var health = 3 
 
 # Reference to player node
-@onready var player = $Shilo_CharBody2D  # Adjust the path
+@onready var player = get_parent().get_parent().get_node("res://Level_1/scenes/Shilo.tscn")
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _ready():

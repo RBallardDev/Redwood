@@ -137,10 +137,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wry64"]
-size = Vector2(262, 140)
+size = Vector2(206, 140)
 
 [node name="Car" type="Area2D"]
-collision_mask = 2
+collision_layer = 2
 script = ExtResource("1_747sy")
 metadata/_edit_vertical_guides_ = [-186.0]
 
@@ -153,7 +153,7 @@ autoplay = "idle"
 frame_progress = 0.277507
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(41, 60)
+position = Vector2(13, 60)
 shape = SubResource("RectangleShape2D_wry64")
 
 [node name="CarIdleSound" type="AudioStreamPlayer2D" parent="."]
@@ -168,3 +168,5 @@ stream = ExtResource("7_anm1g")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_exited" from="." to="." method="_on_area_exited"]

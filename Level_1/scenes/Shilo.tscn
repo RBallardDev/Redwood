@@ -1,14 +1,14 @@
 [gd_scene load_steps=65 format=3 uid="uid://duxgxp7rw77cv"]
 
 [ext_resource type="Script" path="res://Level_1/scripts/Shilo_script.gd" id="1_fhigf"]
-[ext_resource type="Texture2D" uid="uid://bpa4r86ifkghh" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_attack2.png" id="2_4q2xd"]
-[ext_resource type="Texture2D" uid="uid://cxdh2wnxbojw8" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_climb.png" id="3_h3jg0"]
-[ext_resource type="Texture2D" uid="uid://bu8ty6d30jxmo" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/crouch slide woodcutter.png" id="4_5gqwr"]
-[ext_resource type="Texture2D" uid="uid://djsbt77aniqxt" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_death.png" id="4_ejy6x"]
-[ext_resource type="Texture2D" uid="uid://clm8fkihuu7kk" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/idle no axe fix.png" id="5_5mp6u"]
-[ext_resource type="Texture2D" uid="uid://cdu38lo1nks4o" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_jump fixed axe.png" id="6_4d33d"]
-[ext_resource type="Texture2D" uid="uid://c3q6wytuwxxys" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_run fix 3.png" id="7_7neo7"]
-[ext_resource type="Texture2D" uid="uid://cxcw5m8d8xgyu" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/1 Woodcutter/Woodcutter_walk.png" id="8_xqjt8"]
+[ext_resource type="Texture2D" uid="uid://bpa4r86ifkghh" path="res://Level_1/1 Woodcutter/axe/Woodcutter_attack2.png" id="2_4q2xd"]
+[ext_resource type="Texture2D" uid="uid://cxdh2wnxbojw8" path="res://Level_1/1 Woodcutter/not used/Woodcutter_climb.png" id="3_h3jg0"]
+[ext_resource type="Texture2D" uid="uid://bu8ty6d30jxmo" path="res://Level_1/1 Woodcutter/no axe/crouch slide woodcutter.png" id="4_5gqwr"]
+[ext_resource type="Texture2D" uid="uid://djsbt77aniqxt" path="res://Level_1/1 Woodcutter/not used/Woodcutter_death.png" id="4_ejy6x"]
+[ext_resource type="Texture2D" uid="uid://clm8fkihuu7kk" path="res://Level_1/1 Woodcutter/no axe/idle no axe fix.png" id="5_5mp6u"]
+[ext_resource type="Texture2D" uid="uid://crwa7o46d1te0" path="res://Level_1/1 Woodcutter/no axe/jump no axe.png" id="7_hgrvx"]
+[ext_resource type="Texture2D" uid="uid://i0p8f7v7nurm" path="res://Level_1/1 Woodcutter/no axe/run with no axe.png" id="8_2xb6u"]
+[ext_resource type="Texture2D" uid="uid://cxcw5m8d8xgyu" path="res://Level_1/1 Woodcutter/not used/Woodcutter_walk.png" id="8_xqjt8"]
 [ext_resource type="AudioStream" uid="uid://dncfjcxp55cbt" path="res://Level_1/audio/running.mp3" id="9_pk1o4"]
 [ext_resource type="AudioStream" uid="uid://cbgw0mwwdvb53" path="res://Level_1/audio/pickup.mp3" id="10_aqe5h"]
 [ext_resource type="AudioStream" uid="uid://f1dylj1b5gdb" path="res://Level_1/audio/Attack_Dashes/swish-9.mp3" id="11_kset3"]
@@ -115,52 +115,52 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("5_5mp6u")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rwqd8"]
-atlas = ExtResource("6_4d33d")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiacg"]
+atlas = ExtResource("7_hgrvx")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3d5r"]
-atlas = ExtResource("6_4d33d")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mxf6"]
+atlas = ExtResource("7_hgrvx")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1te6"]
-atlas = ExtResource("6_4d33d")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v3ul"]
+atlas = ExtResource("7_hgrvx")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pwaj0"]
-atlas = ExtResource("6_4d33d")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0bsx"]
+atlas = ExtResource("7_hgrvx")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vn37o"]
-atlas = ExtResource("6_4d33d")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsg3x"]
+atlas = ExtResource("7_hgrvx")
 region = Rect2(192, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_64xs5"]
-atlas = ExtResource("6_4d33d")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu0ed"]
+atlas = ExtResource("7_hgrvx")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bk6do"]
-atlas = ExtResource("7_7neo7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnssh"]
+atlas = ExtResource("8_2xb6u")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6m5yl"]
-atlas = ExtResource("7_7neo7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vqb2"]
+atlas = ExtResource("8_2xb6u")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4212"]
-atlas = ExtResource("7_7neo7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l8cf"]
+atlas = ExtResource("8_2xb6u")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i05eh"]
-atlas = ExtResource("7_7neo7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n3c2"]
+atlas = ExtResource("8_2xb6u")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jpkuw"]
-atlas = ExtResource("7_7neo7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjgs4"]
+atlas = ExtResource("8_2xb6u")
 region = Rect2(192, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xtu2k"]
-atlas = ExtResource("7_7neo7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq24k"]
+atlas = ExtResource("8_2xb6u")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxt6i"]
@@ -288,22 +288,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rwqd8")
+"texture": SubResource("AtlasTexture_kiacg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t3d5r")
+"texture": SubResource("AtlasTexture_2mxf6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h1te6")
+"texture": SubResource("AtlasTexture_8v3ul")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pwaj0")
+"texture": SubResource("AtlasTexture_w0bsx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vn37o")
+"texture": SubResource("AtlasTexture_dsg3x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_64xs5")
+"texture": SubResource("AtlasTexture_lu0ed")
 }],
 "loop": true,
 "name": &"jump",
@@ -311,22 +311,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bk6do")
+"texture": SubResource("AtlasTexture_qnssh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6m5yl")
+"texture": SubResource("AtlasTexture_6vqb2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4212")
+"texture": SubResource("AtlasTexture_0l8cf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i05eh")
+"texture": SubResource("AtlasTexture_7n3c2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jpkuw")
+"texture": SubResource("AtlasTexture_jjgs4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xtu2k")
+"texture": SubResource("AtlasTexture_wq24k")
 }],
 "loop": false,
 "name": &"run",
@@ -374,7 +374,7 @@ script = ExtResource("1_fhigf")
 position = Vector2(22, 18)
 scale = Vector2(1.32812, 1.32812)
 sprite_frames = SubResource("SpriteFrames_6h2h1")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
 speed_scale = 1.5
 metadata/_edit_group_ = true
@@ -404,7 +404,7 @@ limit_bottom = 645
 limit_smoothed = true
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(24, 28)
@@ -450,3 +450,6 @@ position = Vector2(20, 3)
 stream = ExtResource("18_psttk")
 volume_db = 8.0
 pitch_scale = 0.81
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

@@ -1,7 +1,23 @@
+# FILENAME: shilo.gd
+
 extends CharacterBody2D
 
+# Variable to track the rope's pickup state
+var rope_in_range = false  # Is the rope within interaction range?
+var held_item = null  # Track the item being held (if any)
+
+# Reference to interaction Area2D
+@onready var interaction_area = $Area2D  # Adjust path if necessary
+
+#@onready var rope = get_parent().get_node("Rope")
+#var rope = get_parent().get_node("Rope")
+var rope = null
+
+# Constants
+const PICKUP_KEY = "pickup_drop"  # Key for picking up/dropping items
+
 var min_x = -1031
-var max_x = 1520
+var max_x = 1515
 
 # Constants for movement
 const SPEED = 200.0
@@ -13,11 +29,18 @@ const WALL_GRAB_TIME = 0.5
 const SLIDE_DURATION = 0.5
 const DASH_SPEED = 750.0
 
+const DROP_KEY = "pickup_drop"  # Key for dropping items
+
+const DROP_OFFSET = Vector2(10, 0)
+
+
+
 # States
 enum State {IDLE, RUN, JUMP, ATTACK_DASH, CROUCH, CROUCH_WALK, SLIDE, WALL_GRAB, PICKUP}
 
 # Current state
 var current_state = State.IDLE
+
 
 # Timer variables
 var wall_grab_timer = 0.0
@@ -46,19 +69,42 @@ var rested = false
 @onready var collision_slide = $CollisionSlide  # Slide hitbox
 
 
-
 var flip_offset = 0
 
+func _ready():
+	# Locate the rope in the level
+	rope = get_parent().get_node("Rope")
+	if rope:
+		print("Rope found:", rope.name)
+	else:
+		print("Rope not found!")
+
+
 func update_sprite_flip(direction: int):
+	
 	if direction < 0:
 		animated_sprite.flip_h = true
 	elif direction > 0:
 		animated_sprite.flip_h = false
 
+func _process(delta: float) -> void:
+	#if rope and rope.player_in_range and Input.is_action_just_pressed("pickup_drop"):
+		#rope.pick_up()
+
+	#if rope.player_in_range and Input.is_action_just_pressed("pickup_drop"):
+		#if rope.is_picked_up:
+			#drop_at()
+		#else:
+			#pick_up()
+	pass
+	
+
 func _physics_process(delta):
+	
 	# Apply gravity by default
 	if not is_on_floor() and current_state != State.WALL_GRAB:
 		velocity.y += GRAVITY * delta
+	
 
 	# Handle player state
 	match current_state:
@@ -76,20 +122,20 @@ func _physics_process(delta):
 			handle_crouch_walk_state()
 		State.SLIDE:
 			handle_slide_state(delta)
-		State.WALL_GRAB:
-			handle_wall_grab_state(delta)
-		State.PICKUP:
-			handle_pickup()
 
 	move_and_slide()  # Move player based on the final velocity
 	position.x = clamp(position.x, min_x, max_x)  # Prevent moving off the map
 
 func handle_idle_state():
-	idle_rest_timer -= get_physics_process_delta_time()
+		  # Skip further state handling during interaction
+
+	# Allow transitions to other states
 	if Input.is_action_just_pressed("attack"):
 		change_state(State.ATTACK_DASH)
 	elif Input.is_action_just_pressed("interact"):
-		change_state(State.PICKUP)
+		pickup.play()
+	elif Input.is_action_just_pressed(" pickup_drop"):
+		pickup.play()
 	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("run_right"):
 		change_state(State.RUN, 1)
 	elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("run_left"):
@@ -98,6 +144,13 @@ func handle_idle_state():
 		change_state(State.JUMP)
 	elif Input.is_action_just_pressed("crouch"):
 		change_state(State.CROUCH)
+	#elif Input.is_action_just_pressed("pickup_drop"):
+		#if rope.player_in_range:
+			#if rope.is_picked_up:
+				#drop_at()
+			#else:
+				#pick_up()
+		
 
 func handle_run_state():
 	var direction = 0
@@ -149,7 +202,6 @@ func handle_jump_state():
 		change_state(State.IDLE)
 	elif Input.is_action_just_pressed("crouch"):
 		change_state(State.CROUCH)
-
 
 func handle_crouch_state():
 	velocity.x = 0  # Stay idle while crouching
@@ -218,7 +270,7 @@ func handle_slide_state(delta):
 	animated_sprite.frame = 1  # Slide frame
 	if not slide.is_playing():
 		slide.play()
-		
+
 func handle_attack_dash_state():
 	attack_timer -= get_physics_process_delta_time()
 	is_dashing = true
@@ -252,12 +304,15 @@ func handle_wall_grab_state(delta):
 	elif wall_grab_timer > WALL_GRAB_TIME:
 		change_state(State.IDLE)
 
-func handle_pickup():
-	change_state(State.IDLE)
-	pickup.play()
-
 # Update the collision boxes in change_state
 func change_state(new_state, direction = 0):
+	
+	
+	
+	if current_state == new_state:
+		print("Warning: Already in state", new_state)
+		return
+	
 	# Stop jump sound if leaving jump state
 	if current_state == State.JUMP and new_state != State.JUMP:
 		if jump.is_playing():
@@ -309,3 +364,12 @@ func change_state(new_state, direction = 0):
 			wall_grab_timer = 0.8
 		State.PICKUP:
 			pickup.play()
+
+
+#func pick_up():
+	#if Input.is_action_just_pressed("pickup_drop"):
+		#rope.pick_up()
+	#
+#func drop_at():
+	#
+	#rope.drop_at(global_position)
