@@ -18,6 +18,7 @@ const PICKUP_KEY = "pickup_drop"  # Key for picking up/dropping items
 
 var min_x = -1031
 var max_x = 1515
+var min_y = 370
 
 # Constants for movement
 const SPEED = 200.0
@@ -124,7 +125,8 @@ func _physics_process(delta):
 			handle_slide_state(delta)
 
 	move_and_slide()  # Move player based on the final velocity
-	position.x = clamp(position.x, min_x, max_x)  # Prevent moving off the map
+	position.x = clamp(position.x, min_x, max_x, )
+	position.y = max(position.y, 370)  # Prevent moving off the map
 
 func handle_idle_state():
 		  # Skip further state handling during interaction
@@ -272,6 +274,7 @@ func handle_slide_state(delta):
 		slide.play()
 
 func handle_attack_dash_state():
+	
 	attack_timer -= get_physics_process_delta_time()
 	is_dashing = true
 
@@ -293,6 +296,9 @@ func handle_attack_dash_state():
 		is_dashing = false
 		dash_sfx_played = false
 		change_state(State.IDLE)
+
+func is_attacking() -> bool:
+	return current_state == State.ATTACK_DASH
 
 func handle_wall_grab_state(delta):
 	wall_grab_timer += delta
@@ -325,6 +331,9 @@ func change_state(new_state, direction = 0):
 	if new_state == State.SLIDE or new_state == State.CROUCH or new_state == State.CROUCH_WALK:
 		collision_slide.disabled = false
 		collision_normal.disabled = true
+		
+	if current_state == State.ATTACK_DASH and new_state != State.ATTACK_DASH:
+		is_dashing = false  # Reset is_dashing when leaving the dash state
 
 	# Update state
 	current_state = new_state

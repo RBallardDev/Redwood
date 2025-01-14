@@ -23,8 +23,8 @@ shape = SubResource("RectangleShape2D_2yi4n")
 motion_scale = Vector2(0.1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Layer7"]
-position = Vector2(250, 318.5)
-scale = Vector2(2.223, 0.99537)
+position = Vector2(250, 505.5)
+scale = Vector2(2.223, 0.41821)
 texture = ExtResource("1_jun82")
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
