@@ -99,17 +99,23 @@ func die():
 	print("Enemy defeated!")
 	current_state = State.DEATH
 
-	# Play death animation
+	# Randomize facing direction for death animation
+	if randi() % 2 == 0:
+		animated_sprite.flip_h = true  # Face away from Shilo
+	else:
+		animated_sprite.flip_h = false  # Face towards Shilo
+
+	# Play the death animation
 	animated_sprite.play("death")
 	print("Playing death animation")
 
 	# Wait for death animation using the timer
-	timer.start(1.0)  # Adjust duration for your "death" animation
+	timer.start(.8)  # Adjust duration for your "death" animation
 
 func _on_Timer_timeout():
 	if current_state == State.DEATH:
 		print("Removing enemy after death animation.")
-		queue_free()
+		queue_free()  # Remove the enemy from the scene
 
 # State Transitions
 func change_state(new_state):
