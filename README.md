@@ -33,7 +33,7 @@ Endless fun in sandbox mode!
 ## 🛠️ Tools Used
 	•	Godot Engine: For game development.
 	•	Git: For version control.
-	•	GIMP: For sprite creation and editing.
+	•	Photoshop/GIMP: For sprite creation and editing.
 	•	Audacity: For audio editing.
 
 ## 👤 Author
