@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Redwood"
-run/main_scene="res://Intro.tscn"
+run/main_scene="res://transitions/Intro.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+
+[audio]
+
+buses/default_bus_layout="res://extra scenes/default_bus_layout.tres"
 
 [display]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://hilsr40tavac"]
 
-[ext_resource type="Script" path="res://rock.gd" id="1_5lq2j"]
+[ext_resource type="Script" path="res://extra scenes/rock.gd" id="1_5lq2j"]
 [ext_resource type="Texture2D" uid="uid://kqan23jib75p" path="res://Assets/rock-7562944_1280.png" id="1_wl5fp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7yo3h"]

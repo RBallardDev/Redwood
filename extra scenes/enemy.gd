@@ -15,9 +15,10 @@ var patrol_start_position = Vector2()
 var idle_timer = 0.0
 var health = 1  # Enemies die in one hit for simplicity
 
-# References to player and animation
+# References to player, animation, and audio
 @onready var player = get_parent().get_node("Shilo")  # Adjust the path
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var sprite_offset = $SpriteOffset  # Node2D used to offset the sprite
+@onready var animated_sprite = $SpriteOffset/AnimatedSprite2D  # Update the path
 @onready var timer = $Timer  # Timer node to handle delays like death
 
 func _ready():
@@ -38,9 +39,14 @@ func _process(delta):
 			State.ATTACK:
 				handle_attack_state()
 
-	# Flip sprite to face the player or patrol direction
+	# Flip sprite to face the player or patrol direction and adjust the offset
 	if current_state != State.DEATH:  # Don't flip during death animation
-		animated_sprite.flip_h = (player.global_position.x < global_position.x)
+		if player.global_position.x < global_position.x:
+			animated_sprite.flip_h = true
+			sprite_offset.position = Vector2(-10, 0)  # Adjust offset when flipped
+		else:
+			animated_sprite.flip_h = false
+			sprite_offset.position = Vector2(0, 0)  # Reset offset
 
 # State Handlers
 func handle_idle_state(delta):
@@ -102,15 +108,23 @@ func die():
 	# Randomize facing direction for death animation
 	if randi() % 2 == 0:
 		animated_sprite.flip_h = true  # Face away from Shilo
+		sprite_offset.position = Vector2(-10, 0)  # Adjust offset
 	else:
 		animated_sprite.flip_h = false  # Face towards Shilo
+		sprite_offset.position = Vector2(0, 0)  # Reset offset
 
 	# Play the death animation
 	animated_sprite.play("death")
 	print("Playing death animation")
 
-	# Wait for death animation using the timer
-	timer.start(.8)  # Adjust duration for your "death" animation
+	# Randomly play one of the two death audio clips
+	if randi() % 2 == 0:
+		$DeathAudio1.play()
+	else:
+		$DeathAudio2.play()
+
+	# Wait for death animation using a fixed timer
+	timer.start(0.8)  # Adjust duration for your "death" animation
 
 func _on_Timer_timeout():
 	if current_state == State.DEATH:
@@ -130,4 +144,4 @@ func change_state(new_state):
 		State.PATROL:
 			direction = 1 if randf() > 0.5 else -1  # Randomize patrol direction
 		State.CHASE:
-			direction = 0  # Reset patrol direction
+			direction = 0  # Reset patrol direction 

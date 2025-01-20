@@ -1,11 +1,13 @@
-[gd_scene load_steps=34 format=3 uid="uid://c3dyiw8mng4p1"]
+[gd_scene load_steps=36 format=3 uid="uid://c3dyiw8mng4p1"]
 
 [ext_resource type="Texture2D" uid="uid://caipdu1xu1sna" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/2 GraveRobber/GraveRobber_attack1.png" id="1_1dqsp"]
-[ext_resource type="Script" path="res://enemy.gd" id="1_otq1a"]
+[ext_resource type="Script" path="res://extra scenes/enemy.gd" id="1_otq1a"]
 [ext_resource type="Texture2D" uid="uid://dx6lsomf1rppl" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/2 GraveRobber/GraveRobber_hurt.png" id="2_mt8oh"]
 [ext_resource type="Texture2D" uid="uid://b7mc2l1jhv6b5" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/2 GraveRobber/GraveRobber_idle.png" id="3_0wdek"]
 [ext_resource type="Texture2D" uid="uid://ckg4k6j24mkuw" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/2 GraveRobber/GraveRobber_death.png" id="3_hkxl2"]
 [ext_resource type="Texture2D" uid="uid://clnn1swtp57cq" path="res://Assets/craftpix-net-127655-free-3-character-sprite-sheets-pixel-art/2 GraveRobber/GraveRobber_walk.png" id="4_4bnwg"]
+[ext_resource type="AudioStream" uid="uid://dv15tdg1q82h" path="res://Level_1/audio/death sound 3 magnus self written.mp3" id="7_yjqp3"]
+[ext_resource type="AudioStream" uid="uid://bavplleha0ky3" path="res://Level_1/audio/522091__magnuswaker__pound-of-flesh-2.mp3" id="8_xktqb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tldqp"]
 atlas = ExtResource("1_1dqsp")
@@ -217,11 +219,13 @@ radius = 22.3607
 collision_layer = 2
 script = ExtResource("1_otq1a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="SpriteOffset" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteOffset"]
 position = Vector2(5.5, -5.5)
 scale = Vector2(1.22917, 1.22917)
 sprite_frames = SubResource("SpriteFrames_glhp6")
-animation = &"death"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -229,6 +233,12 @@ position = Vector2(-2, 5)
 shape = SubResource("CircleShape2D_seo8k")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="DeathAudio1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_yjqp3")
+
+[node name="DeathAudio2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xktqb")
 
 [connection signal="area_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

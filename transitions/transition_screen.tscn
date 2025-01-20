@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2uvvsajp52u4"]
+
+[ext_resource type="Script" path="res://transitions/transition_screen.gd" id="1_tsccg"]
+[ext_resource type="PackedScene" uid="uid://duqsqtiaghic0" path="res://Level_1/scenes/parallax_background.tscn" id="2_brwij"]
+
+[node name="TransitionScreen" type="Node2D"]
+script = ExtResource("1_tsccg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.052
+anchor_top = 0.858
+anchor_right = 0.053
+anchor_bottom = 0.906
+offset_left = 481.904
+offset_top = -159.984
+offset_right = 481.944
+offset_bottom = -160.088
+scale = Vector2(2.6, 2.6)
+text = "Start Sandbox."
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.186
+anchor_top = 0.674
+anchor_right = 0.186
+anchor_bottom = 0.867
+offset_left = 215.272
+offset_top = -367.752
+offset_right = 253.728
+offset_bottom = -363.816
+scale = Vector2(2.47, 2.47)
+text = "Thank you for testing out my game!
+
+I still have a lot of developing to do,
+ so please feel free to test out this sandbox and have fun."
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -228.0
+offset_top = 345.0
+offset_right = 1333.0
+offset_bottom = 673.0
+color = Color(0, 0, 0, 0.583)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_brwij")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(12, 28)
+zoom = Vector2(2.5, 2.5)
+limit_left = -1030
+limit_top = 370
+limit_right = 1531
+limit_bottom = 645
+limit_smoothed = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_continue_pressed"]

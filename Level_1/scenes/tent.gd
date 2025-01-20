@@ -35,4 +35,4 @@ func _on_area_exited(area: Node) -> void:
 
 func go_to_next_level():
 	print("Transitioning to the next level...")
-	get_tree().change_scene_to_file("res://main.tscn")  # Replace with the correct path
+	get_tree().change_scene_to_file("res://transitions/transition_screen.tscn")  # Replace with the correct path

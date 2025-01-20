@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://xllgmivpit45"]
 
 [ext_resource type="PackedScene" uid="uid://duxgxp7rw77cv" path="res://Level_1/scenes/Shilo.tscn" id="1_4hpag"]
-[ext_resource type="Script" path="res://main.gd" id="1_wyft0"]
+[ext_resource type="Script" path="res://transitions/main.gd" id="1_wyft0"]
 [ext_resource type="PackedScene" uid="uid://duqsqtiaghic0" path="res://Level_1/scenes/parallax_background.tscn" id="2_x2v5c"]
-[ext_resource type="PackedScene" uid="uid://c3dyiw8mng4p1" path="res://enemy.tscn" id="5_pfdf3"]
+[ext_resource type="PackedScene" uid="uid://c3dyiw8mng4p1" path="res://extra scenes/enemy.tscn" id="5_pfdf3"]
 [ext_resource type="AudioStream" uid="uid://bxmebio3tyrth" path="res://Level_1/audio/427400__imjeax__forest-ambient-loop.wav" id="6_67qlw"]
 
 [node name="Main" type="Node2D"]

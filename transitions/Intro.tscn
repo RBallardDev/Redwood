@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bj04margm42hq"]
 
-[ext_resource type="Script" path="res://Intro.gd" id="1_nh0od"]
+[ext_resource type="Script" path="res://transitions/Intro.gd" id="1_nh0od"]
 [ext_resource type="Texture2D" uid="uid://dm3l7051ss11v" path="res://Level_1/redwood logo fixed.png" id="2_5qoir"]
 
 [sub_resource type="Animation" id="Animation_7tu26"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv15tdg1q82h"
+path="res://.godot/imported/death sound 3 magnus self written.mp3-2bc72820bd1b18f9cbc77d42308e860d.mp3str"
+
+[deps]
+
+source_file="res://Level_1/audio/death sound 3 magnus self written.mp3"
+dest_files=["res://.godot/imported/death sound 3 magnus self written.mp3-2bc72820bd1b18f9cbc77d42308e860d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
