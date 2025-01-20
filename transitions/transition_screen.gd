@@ -6,4 +6,4 @@ extends Node2D
 
 func _on_continue_pressed():
 	# Change to the next level
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://transitions/main.tscn")
