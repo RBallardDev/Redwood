@@ -1,4 +1,4 @@
-# [Redwood]
+# REDWOOD
 A 2D action-adventure game with a sandbox mode! This project is part of my game development journey and demonstrates my skills in game design, coding, and level creation.
 
 ## 🎮 Game Features
